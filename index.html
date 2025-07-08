@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kurudunje Deekshith Shetty - SOC Analyst</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
@@ -16,16 +16,16 @@
         }
         .section-title {
             color: #00ff88;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
             border-bottom: 2px solid #00ff88;
             padding-bottom: 0.5rem;
         }
         .card {
             background-color: #2d2d2d;
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             transition: transform 0.3s ease;
         }
         .card:hover {
@@ -35,10 +35,10 @@
             display: inline-block;
             background-color: #00ff88;
             color: #1a1a1a;
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 20px;
-            margin: 0.5rem;
-            font-size: 0.9rem;
+            margin: 0.3rem;
+            font-size: 0.8rem;
         }
         a {
             color: #00ff88;
@@ -53,14 +53,72 @@
         .download-button {
             background-color: #00ff88;
             color: #1a1a1a;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 8px;
             font-weight: bold;
             transition: background-color 0.3s ease;
+            display: inline-block;
+            min-width: 120px;
+            text-align: center;
         }
         .download-button:hover {
             background-color: #00cc70;
             text-decoration: none;
+        }
+             #menu-toggle {
+            display: none;
+        }
+        .menu-button {
+            display: none;
+            cursor: pointer;
+        }
+        .menu-button div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        #nav-links {
+            display: flex;
+        }
+        @media (max-width: 640px) {
+            .menu-button {
+                display: block;
+            }
+            #nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background-color: #2d2d2d;
+                padding: 1rem;
+            }
+            #nav-links.active {
+                display: flex;
+            }
+            #nav-links a {
+                padding: 0.5rem 0;
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .card {
+                padding: 0.8rem;
+            }
+            h1.text-4xl {
+                font-size: 1.8rem;
+            }
+            p.text-xl {
+                font-size: 1rem;
+            }
+            .download-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -68,7 +126,13 @@
     <nav class="navbar p-4 shadow-lg fixed w-full top-0 z-10">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold text-white">Kurudunje Deekshith Shetty</h1>
-            <div class="space-x-4">
+            <div class="menu-button md:hidden">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="hidden">
+            <div id="nav-links" class="space-x-4 md:flex">
                 <a href="index.html" class="text-white hover:text-green-400">Home</a>
                 <a href="skills.html" class="text-white hover:text-green-400">Skills</a>
                 <a href="tools.html" class="text-white hover:text-green-400">Tools</a>
@@ -81,7 +145,7 @@
         <section class="text-center mb-12">
             <h1 class="text-4xl font-bold text-white mb-2">Kurudunje Deekshith Shetty</h1>
             <p class="text-xl text-gray-300">SOC Analyst | Security+ Certified</p>
-            <p class="mt-2">
+            <p class="mt-2 text-sm md:text-base">
                 <a href="tel:+17325080380" class="contact-link">+1 (732) 508-0380</a> |
                 <a href="mailto:k.deekshithshetty@gmail.com" class="contact-link">k.deekshithshetty@gmail.com</a> |
                 Jersey City, NJ |
@@ -96,14 +160,14 @@
         <section class="mb-12">
             <h2 class="section-title">Summary</h2>
             <div class="card">
-                <p>Dedicated Cybersecurity Analyst L1 with nearly 3 years of experience in security event analysis and incident response. Committed to enhancing organizational security posture through proactive monitoring and advanced defense strategies. Recognized for optimizing correlation rules, reducing false positives by over 50%, and maintaining 100% adherence to service-level agreements with every client. Currently pursuing a Master of Science in Cybersecurity and Privacy at NJIT with a 3.95 GPA, combining academic excellence with real-world experience. Passionate about network security, continuous learning, and empowering others through cybersecurity education and mentorship.</p>
+                <p class="text-sm md:text-base">Dedicated Cybersecurity Analyst L1 with nearly 3 years of experience in security event analysis and incident response. Committed to enhancing organizational security posture through proactive monitoring and advanced defense strategies. Recognized for optimizing correlation rules, reducing false positives by over 50%, and maintaining 100% adherence to service-level agreements with every client. Currently pursuing a Master of Science in Cybersecurity and Privacy at NJIT with a 3.95 GPA, combining academic excellence with real-world experience. Passionate about network security, continuous learning, and empowering others through cybersecurity education and mentorship.</p>
             </div>
         </section>
 
         <section class="mb-12">
             <h2 class="section-title">Certifications</h2>
             <div class="card">
-                <ul class="list-disc list-inside">
+                <ul class="list-disc list-inside text-sm md:text-base">
                     <li>CompTIA Security+</li>
                     <li>Fortinet NSE 5 - FortiSIEM</li>
                 </ul>
@@ -113,16 +177,22 @@
         <section class="mb-12">
             <h2 class="section-title">Education</h2>
             <div class="card">
-                <h3 class="text-lg font-semibold">M.Sc. in Cyber Security and Privacy</h3>
-                <p class="text-gray-400">New Jersey Institute of Technology - Ying Wu College of Computing, Newark, NJ</p>
-                <p class="text-gray-400">Jan 2024 - Dec 2025 | CGPA: 3.95/4.00</p>
-                <p class="mt-2"><strong>Relevant Coursework:</strong> Counter Hacking Techniques, Network Security Protocols, Cryptography and Security, Cloud Computing, Computer Security Auditing, Cyber Security Investigations and Law, Human Centered Privacy and Usability, Internet and Higher Layer Protocols, Security and Privacy in Computer Systems</p>
+                <h3 class="text-base md:text-lg font-semibold">M.Sc. in Cyber Security and Privacy</h3>
+                <p class="text-gray-400 text-sm md:text-base">New Jersey Institute of Technology - Ying Wu College of Computing, Newark, NJ</p>
+                <p class="text-gray-400 text-sm md:text-base">Jan 2024 - Dec 2025 | CGPA: 3.95/4.00</p>
+                <p class="mt-2 text-sm md:text-base"><strong>Relevant Coursework:</strong> Counter Hacking Techniques, Network Security Protocols, Cryptography and Security, Cloud Computing, Computer Security Auditing, Cyber Security Investigations and Law, Human Centered Privacy and Usability, Internet and Higher Layer Protocols, Security and Privacy in Computer Systems</p>
             </div>
         </section>
     </div>
 
     <footer class="bg-gray-900 text-center py-4 mt-12">
-        <p class="text-gray-400">&copy; 2025 Kurudunje Deekshith Shetty. All rights reserved.</p>
+        <p class="text-gray-400 text-sm">&copy; 2025 Kurudunje Deekshith Shetty. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.querySelector('.menu-button').addEventListener('click', () => {
+            document.querySelector('#nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

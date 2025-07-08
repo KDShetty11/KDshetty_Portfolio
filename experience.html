@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Experience - Kurudunje Deekshith Shetty</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
@@ -16,20 +16,71 @@
         }
         .section-title {
             color: #00ff88;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
             border-bottom: 2px solid #00ff88;
             padding-bottom: 0.5rem;
         }
         .card {
             background-color: #2d2d2d;
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
             transition: transform 0.3s ease;
         }
         .card:hover {
             transform: translateY(-5px);
+        }
+          #menu-toggle {
+            display: none;
+        }
+        .menu-button {
+            display: none;
+            cursor: pointer;
+        }
+        .menu-button div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        #nav-links {
+            display: flex;
+        }
+        @media (max-width: 640px) {
+            .menu-button {
+                display: block;
+            }
+            #nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background-color: #2d2d2d;
+                padding: 1rem;
+            }
+            #nav-links.active {
+                display: flex;
+            }
+            #nav-links a {
+                padding: 0.5rem 0;
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .card {
+                padding: 0.8rem;
+            }
+            .card h3 {
+                font-size: 1rem;
+            }
+            .card p, .card li {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -37,7 +88,13 @@
     <nav class="navbar p-4 shadow-lg fixed w-full top-0 z-10">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-bold text-white">Kurudunje Deekshith Shetty</h1>
-            <div class="space-x-4">
+            <div class="menu-button md:hidden">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="hidden">
+            <div id="nav-links" class="space-x-4 md:flex">
                 <a href="index.html" class="text-white hover:text-green-400">Home</a>
                 <a href="skills.html" class="text-white hover:text-green-400">Skills</a>
                 <a href="tools.html" class="text-white hover:text-green-400">Tools</a>
@@ -50,19 +107,19 @@
         <section class="mb-12">
             <h2 class="section-title">Professional Experience</h2>
             <div class="card">
-                <h3 class="text-lg font-semibold">Graduate Teaching Assistant - Cryptography and Security</h3>
-                <p class="text-gray-400">New Jersey Institute of Technology, Newark, NJ</p>
-                <p class="text-gray-400">Jun 2024 - Present</p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">Graduate Teaching Assistant - Cryptography and Security</h3>
+                <p class="text-gray-400 text-sm md:text-base">New Jersey Institute of Technology, Newark, NJ</p>
+                <p class="text-gray-400 text-sm md:text-base">Jun 2024 - Present</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Graded assignments and exams for over 200+ students per semester, mentored students, teaching them complex cryptographic concepts</li>
                     <li>Assisted in practical labs and exam evaluations, contributing to student success in core security modules</li>
                 </ul>
             </div>
             <div class="card">
-                <h3 class="text-lg font-semibold">Security Operations Analyst</h3>
-                <p class="text-gray-400">Terralogic Software Solutions Pvt Ltd, Bengaluru, IN</p>
-                <p class="text-gray-400">Sep 2021 - Dec 2023</p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">Security Operations Analyst</h3>
+                <p class="text-gray-400 text-sm md:text-base">Terralogic Software Solutions Pvt Ltd, Bengaluru, IN</p>
+                <p class="text-gray-400 text-sm md:text-base">Sep 2021 - Dec 2023</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Monitored and triaged 500+ alerts monthly using LogRhythm SIEM, Stellar Cyber XDR, FortiGate firewall, Palo Alto Stratos, SentinelOne EDR, Darktrace NDR, Beyond Trust IAM, identifying and escalating 150+ high-priority incidents</li>
                     <li>Assisted with SOC2 Audit and re-configured technical and managerial controls based on industry best practices(NIST and CIS)</li>
                     <li>Coordinated with teams on correlation rules referencing MITRE ATT&CK framework, mapping over 50+ custom rules</li>
@@ -74,10 +131,10 @@
                 </ul>
             </div>
             <div class="card">
-                <h3 class="text-lg font-semibold">SOC Intern</h3>
-                <p class="text-gray-400">Terralogic Software Solutions Pvt Ltd, Bengaluru, IN</p>
-                <p class="text-gray-400">Jun 2021 - Sep 2021</p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">SOC Intern</h3>
+                <p class="text-gray-400 text-sm md:text-base">Terralogic Software Solutions Pvt Ltd, Bengaluru, IN</p>
+                <p class="text-gray-400 text-sm md:text-base">Jun 2021 - Sep 2021</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Conducted phishing simulations, prepared 10+ monthly client reports, and supported SOC and NOC operations across multiple departments</li>
                     <li>Designed 10+ dashboards and 35+ query filters for enhanced detection and faster threat hunting</li>
                     <li>Integrated various threat intelligence tools like Shodan, VirusTotal, Talos into existing security tools</li>
@@ -88,10 +145,10 @@
         <section class="mb-12">
             <h2 class="section-title">Leadership Experience</h2>
             <div class="card">
-                <h3 class="text-lg font-semibold">Instructor - STEMX Cybersecurity Bootcamp</h3>
-                <p class="text-gray-400">NJIT - Ying Wu College of Computing</p>
-                <p class="text-gray-400">Jun 2024 - Aug 2024</p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">Instructor - STEMX Cybersecurity Bootcamp</h3>
+                <p class="text-gray-400 text-sm md:text-base">NJIT - Ying Wu College of Computing</p>
+                <p class="text-gray-400 text-sm md:text-base">Jun 2024 - Aug 2024</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Led bootcamp sessions for high school students at NJIT, teaching cybersecurity principles and hands-on labs</li>
                 </ul>
             </div>
@@ -100,10 +157,10 @@
         <section class="mb-12">
             <h2 class="section-title">Extracurricular Activity</h2>
             <div class="card">
-                <h3 class="text-lg font-semibold">External Volunteer - JerseyCTF 2025</h3>
-                <p class="text-gray-400">NJIT - Ying Wu College of Computing</p>
-                <p class="text-gray-400">Mar 2025 - May 2025</p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">External Volunteer - JerseyCTF 2025</h3>
+                <p class="text-gray-400 text-sm md:text-base">NJIT - Ying Wu College of Computing</p>
+                <p class="text-gray-400 text-sm md:text-base">Mar 2025 - May 2025</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Designed and reviewed cryptography challenges for NJIT's Capture the Flag competition</li>
                 </ul>
             </div>
@@ -112,49 +169,49 @@
         <section class="mb-12">
             <h2 class="section-title">Academic Projects</h2>
             <div class="card">
-                <h3 class="text-lg font-semibold">Examining User Behavior and Trust in Free VPN Services</h3>
-                <p class="text-gray-400"><a href="https://github.com/KDShetty11/Beyond-the-Price-Tag-Examining-User-Behavior-and-Trust-in-Free-VPN-Services">GitHub</a></p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">Examining User Behavior and Trust in Free VPN Services</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Beyond-the-Price-Tag-Examining-User-Behavior-and-Trust-in-Free-VPN-Services">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Investigated user trust in free VPN services through a primary survey of 94 general users and a secondary survey of 16 security-aware users with cybersecurity expertise</li>
                     <li>Utilized XeLaTeX, Likert scale, thematic analysis, and stratified sampling</li>
                 </ul>
             </div>
             <div class="card">
-                <h3 class="text-lg font-semibold">Salesforce Application Audit Report</h3>
-                <p class="text-gray-400"><a href="https://github.com/KDShetty11/Salesforce-Application-Security-Audit-Report">GitHub</a></p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">Salesforce Application Audit Report</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Salesforce-Application-Security-Audit-Report">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Created a complete audit plan for a hypothetical Salesforce application including risk, compliance, and mitigation analysis</li>
                     <li>Utilized XeLaTeX, Permission Set Analyzer, OWASP ZAP, Checkmarx vulnerability scanner</li>
                 </ul>
             </div>
             <div class="card">
-                <h3 class="text-lg font-semibold">Energy Consumption Prediction on AWS</h3>
-                <p class="text-gray-400"><a href="https://github.com/KDShetty11/Energy-Consumption-Prediction-System-in-AWS-Cloud">GitHub</a></p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">Energy Consumption Prediction on AWS</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Energy-Consumption-Prediction-System-in-AWS-Cloud">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Designed energy prediction model using Apache Spark and Hadoop in EMR clusters (4-node parallel processing)</li>
                     <li>Utilized MLlib, PySpark, Python, and Docker for containerization</li>
                 </ul>
             </div>
             <div class="card">
-                <h3 class="text-lg font-semibold">AWS Cloud Image Recognition</h3>
-                <p class="text-gray-400"><a href="https://github.com/KDShetty11/AWS_Imagerecog">GitHub</a></p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">AWS Cloud Image Recognition</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/AWS_Imagerecog">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Developed an AWS-based application using Rekognition and Textract APIs to detect faces and extract license text</li>
                     <li>Utilized AWS S3, EC2, and Java</li>
                 </ul>
             </div>
             <div class="card">
-                <h3 class="text-lg font-semibold">Network Defense Simulation</h3>
-                <p class="text-gray-400"><a href="https://github.com/KDShetty11/Network-defense-simulation">GitHub</a></p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">Network Defense Simulation</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Network-defense-simulation">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Integrated Security Onion with pfSense in a virtual lab to simulate alert generation and traffic filtering</li>
                     <li>Utilized Kibana dashboards for visualization through custom Lucene queries, Suricata/Snort NIDS, Metasploit framework, pfSense WAF</li>
                 </ul>
             </div>
             <div class="card">
-                <h3 class="text-lg font-semibold">Buffer Overflow Assessments with GDB</h3>
-                <p class="text-gray-400"><a href="https://github.com/KDShetty11/Buffer-overflow-assessments-with-GDB">GitHub</a></p>
-                <ul class="list-disc list-inside mt-2">
+                <h3 class="text-base md:text-lg font-semibold">Buffer Overflow Assessments with GDB</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Buffer-overflow-assessments-with-GDB">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
                     <li>Investigated memory protection bypasses in binaries using GDB with DEP, ASLR, and SSP enabled</li>
                     <li>Utilized GNU Debugger, C++, x86 Assembly, Perl</li>
                 </ul>
@@ -163,7 +220,12 @@
     </div>
 
     <footer class="bg-gray-900 text-center py-4 mt-12">
-        <p class="text-gray-400">&copy; 2025 Kurudunje Deekshith Shetty. All rights reserved.</p>
+        <p class="text-gray-400 text-sm">&copy; 2025 Kurudunje Deekshith Shetty. All rights reserved.</p>
     </footer>
+    <script>
+        document.querySelector('.menu-button').addEventListener('click', () => {
+            document.querySelector('#nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
