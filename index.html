@@ -513,7 +513,7 @@
                     const navbarHeight = 64; 
                     const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
                     const viewportHeight = window.innerHeight;
-                    const scrollPosition = sectionTop - viewportHeight/8 - navbarHeight;
+                    const scrollPosition = sectionTop - navbarHeight - 20;
 
                     window.scrollTo({
                         top: scrollPosition,
