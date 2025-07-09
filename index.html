@@ -21,6 +21,12 @@
             border-bottom: 2px solid #00ff88;
             padding-bottom: 0.5rem;
         }
+        .category-title {
+            color: #00ff88;
+            font-size: 1.2rem;
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
         .card {
             background-color: #2d2d2d;
             border-radius: 8px;
@@ -133,10 +139,13 @@
             </div>
             <input type="checkbox" id="menu-toggle" class="hidden">
             <div id="nav-links" class="space-x-4 md:flex">
-                <a href="index.html" class="text-white hover:text-green-400">Home</a>
-                <a href="skills.html" class="text-white hover:text-green-400">Skills</a>
-                <a href="tools.html" class="text-white hover:text-green-400">Tools</a>
-                <a href="experience.html" class="text-white hover:text-green-400">Experience</a>
+                <a href="#summary" class="text-white hover:text-green-400">Summary</a>
+                <a href="#certifications" class="text-white hover:text-green-400">Certifications</a>
+                <a href="#education" class="text-white hover:text-green-400">Education</a>
+
+                <a href="#skills" class="text-white hover:text-green-400">Skills</a>
+                <a href="#tools" class="text-white hover:text-green-400">Tools</a>
+                <a href="#experience" class="text-white hover:text-green-400">Experience</a>
             </div>
         </div>
     </nav>
@@ -157,14 +166,14 @@
             </p>
         </section>
 
-        <section class="mb-12">
+        <section id="summary" class="mb-12">
             <h2 class="section-title">Summary</h2>
             <div class="card">
                 <p class="text-sm md:text-base">Dedicated Cybersecurity Analyst L1 with nearly 3 years of experience in security event analysis and incident response. Committed to enhancing organizational security posture through proactive monitoring and advanced defense strategies. Recognized for optimizing correlation rules, reducing false positives by over 50%, and maintaining 100% adherence to service-level agreements with every client. Currently pursuing a Master of Science in Cybersecurity and Privacy at NJIT with a 3.95 GPA, combining academic excellence with real-world experience. Passionate about network security, continuous learning, and empowering others through cybersecurity education and mentorship.</p>
             </div>
         </section>
 
-        <section class="mb-12">
+        <section id="certifications" class="mb-12">
             <h2 class="section-title">Certifications</h2>
             <div class="card">
                 <ul class="list-disc list-inside text-sm md:text-base">
@@ -174,7 +183,7 @@
             </div>
         </section>
 
-        <section class="mb-12">
+        <section id="education" class="mb-12">
             <h2 class="section-title">Education</h2>
             <div class="card">
                 <h3 class="text-base md:text-lg font-semibold">M.Sc. in Cyber Security and Privacy</h3>
@@ -183,6 +192,296 @@
                 <p class="mt-2 text-sm md:text-base"><strong>Relevant Coursework:</strong> Counter Hacking Techniques, Network Security Protocols, Cryptography and Security, Cloud Computing, Computer Security Auditing, Cyber Security Investigations and Law, Human Centered Privacy and Usability, Internet and Higher Layer Protocols, Security and Privacy in Computer Systems</p>
             </div>
         </section>
+
+        <section id="skills" class="mb-12">
+            <h2 class="section-title">Skills</h2>
+            <div class="mb-8">
+                <h3 class="category-title">Security Operations Skills</h3>
+                <div>
+                <span class="skill-chip">Incident Management</span>
+                <span class="skill-chip">Triage and Response</span>
+                <span class="skill-chip">Digital Forensics</span>
+                <span class="skill-chip">Security Solutions Deployment</span>
+                <span class="skill-chip">Event Correlation</span>
+                <span class="skill-chip">Alert Fine Tuning</span>
+                <span class="skill-chip">Task Automation and Scripting</span>
+                <span class="skill-chip">Log and Behavior Analysis</span>
+                <span class="skill-chip">Vulnerability Management</span>
+                <span class="skill-chip">Threat Management</span>
+                <span class="skill-chip">Gap Analysis</span>
+                <span class="skill-chip">Malware and Phishing Email Analysis</span>
+                <span class="skill-chip">Vulnerability Assessment</span>
+                <span class="skill-chip">Penetration Testing</span>
+                <span class="skill-chip">Compromise and Risk Assessment</span>
+                <span class="skill-chip">Auditing</span>
+                </div>
+            </div>
+            <div class="mb-8">
+                <h3 class="category-title">Network Operations Skills</h3>
+                <div>
+                <span class="skill-chip">Network Administration</span>
+                <span class="skill-chip">Network Visualization</span>
+                <span class="skill-chip">Firewall Rule Optimization</span>
+                <span class="skill-chip">Identity and Access Management</span>
+                <span class="skill-chip">Network Management</span>
+                <span class="skill-chip">AWS Cloud Services</span>
+                <span class="skill-chip">Business Continuity Planning</span>
+                <span class="skill-chip">High Availability</span>
+                <span class="skill-chip">Disaster Recovery</span>
+                </div>
+            </div>
+            <div class="mb-8">
+                <h3 class="category-title">Frameworks</h3>
+                <div>
+                <span class="skill-chip">MITRE ATT&CK</span>
+                <span class="skill-chip">NIST SP 800-61</span>
+                <span class="skill-chip">ISO 27001</span>
+                <span class="skill-chip">CIS Controls</span>
+                <span class="skill-chip">OSINT</span>
+                <span class="skill-chip">OWASP</span>
+                <span class="skill-chip">Metasploit</span>
+                </div>
+            </div>    
+        </section>
+
+        <section id="tools" class="mb-12">
+            <h2 class="section-title">Technical Toolset</h2>
+            <div class="mb-8">
+                <h3 class="category-title">Programming Languages</h3>
+                 <div>
+                    <span class="skill-chip">x86 Assembly</span>
+                    <span class="skill-chip">Bash Scripting</span>
+                    <span class="skill-chip">HTML</span>
+                    <span class="skill-chip">JavaScript</span>
+                    <span class="skill-chip">Python</span>
+                    <span class="skill-chip">Java</span>
+                    <span class="skill-chip">Perl</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Security Information and Event Management Tools</h3>
+                <div>
+                    <span class="skill-chip">LogRhythm</span>
+                    <span class="skill-chip">Wazuh</span>
+                    <span class="skill-chip">Splunk</span>
+                    <span class="skill-chip">Security Onion</span>
+                    <span class="skill-chip">FortiSIEM</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Endpoint Detection and Response Tools</h3>
+                <div>
+                    <span class="skill-chip">SentinelOne</span>
+                    <span class="skill-chip">Kaspersky</span>
+                    <span class="skill-chip">Trend Micro</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Extended Detection and Response Tools</h3>
+                <div>
+                    <span class="skill-chip">Stellar Cyber</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Network Detection and Response Tools</h3>
+                <div>
+                    <span class="skill-chip">Darktrace</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Firewalls</h3>
+                <div>
+                    <span class="skill-chip">Palo Alto Stratos</span>
+                    <span class="skill-chip">FortiGate</span>
+                    <span class="skill-chip">pfSense</span>
+                    <span class="skill-chip">Sophos</span>
+                    <span class="skill-chip">Check Point</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Identity and Access Management Tools</h3>
+                <div>
+                    <span class="skill-chip">BeyondTrust PRA</span>
+                    <span class="skill-chip">BeyondTrust Password Manager</span>
+                    <span class="skill-chip">Cisco ISE</span>
+                    <span class="skill-chip">SailPoint IdentityNow</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Network Access Control Tools</h3>
+                <div>
+                    <span class="skill-chip">Forescout NAC</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Vulnerability Assessment and Penetration Testing Tools</h3>
+                <div>
+                    <span class="skill-chip">Metasploit</span>
+                    <span class="skill-chip">Nmap</span>
+                    <span class="skill-chip">Nessus</span>
+                    <span class="skill-chip">OpenVAS</span>
+                    <span class="skill-chip">Burp Suite</span>
+                    <span class="skill-chip">GNU Debugger</span>
+
+
+
+                </div>
+            </div>
+
+             <div class="mb-8">
+                <h3 class="category-title">Customer Relationship Management Tools</h3>
+                <div>
+                    <span class="skill-chip">Salesforce</span>
+                    <span class="skill-chip">Jira</span>
+                    <span class="skill-chip">Zendesk</span>
+                    <span class="skill-chip">Zoho</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Network Visualization Tools</h3>
+                <div>
+                    <span class="skill-chip">Wireshark</span>
+                    <span class="skill-chip">Cisco Packet Tracer</span>
+                    <span class="skill-chip">Algosec Firewall Analyzer</span>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="category-title">Other</h3>
+                <div>
+                    <span class="skill-chip">Cisco IOS</span>
+                    <span class="skill-chip">Lucene Query</span>
+                    <span class="skill-chip">Kibana</span>
+                    <span class="skill-chip">LaTeX</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="mb-12">
+            <h2 class="section-title">Experience</h2>
+            <div class="mb-8">
+                <h3 class="category-title">Professional Experience</h3>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">Graduate Teaching Assistant - Cryptography and Security</h3>
+                <p class="text-gray-400 text-sm md:text-base">New Jersey Institute of Technology, Newark, NJ</p>
+                <p class="text-gray-400 text-sm md:text-base">Jun 2024 - Present</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Graded assignments and exams for over 200+ students per semester, mentored students, teaching them complex cryptographic concepts</li>
+                    <li>Assisted in practical labs and exam evaluations, contributing to student success in core security modules</li>
+                </ul>
+                </div>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">Security Operations Analyst</h3>
+                <p class="text-gray-400 text-sm md:text-base">Terralogic Software Solutions Pvt Ltd, Bengaluru, IN</p>
+                <p class="text-gray-400 text-sm md:text-base">Sep 2021 - Dec 2023</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Monitored and triaged 500+ alerts monthly using LogRhythm SIEM, Stellar Cyber XDR, FortiGate firewall, Palo Alto Stratos, SentinelOne EDR, Darktrace NDR, Beyond Trust IAM, identifying and escalating 150+ high-priority incidents</li>
+                    <li>Assisted with SOC2 Audit and re-configured technical and managerial controls based on industry best practices(NIST and CIS)</li>
+                    <li>Coordinated with teams on correlation rules referencing MITRE ATT&CK framework, mapping over 50+ custom rules</li>
+                    <li>Analyzed security incidents, fine-tuned alerts, reduced false positives by almost 50%</li>
+                    <li>Managed incident tickets maintaining 100% adherence to SLAs with every client</li>
+                    <li>Collaborated with senior analysts to develop 30+ SOPs and playbooks for smoother operations and task automation</li>
+                    <li>Worked 12-hour shifts whenever necessary, primarily at night, always alert and responsive to incidents</li>
+
+                </ul>
+                </div>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">SOC Intern</h3>
+                <p class="text-gray-400 text-sm md:text-base">Terralogic Software Solutions Pvt Ltd, Bengaluru, IN</p>
+                <p class="text-gray-400 text-sm md:text-base">Jun 2021 - Sep 2021</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Conducted phishing simulations, prepared 10+ monthly client reports, and supported SOC and NOC operations across multiple departments</li>
+                    <li>Designed 10+ dashboards and 35+ query filters for enhanced detection and faster threat hunting</li>
+                    <li>Integrated various threat intelligence tools like Shodan, VirusTotal, Talos into existing security tools</li>
+                </ul>
+                </div>
+            </div>
+
+        <div class="mb-8">
+            <h3 class="category-title">Leadership Experience</h3>
+            <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">Instructor - STEMX Cybersecurity Bootcamp</h3>
+                <p class="text-gray-400 text-sm md:text-base">NJIT - Ying Wu College of Computing</p>
+                <p class="text-gray-400 text-sm md:text-base">Jun 2024 - Aug 2024</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Led bootcamp sessions for high school students at NJIT, teaching cybersecurity principles and hands-on labs</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mb-8">
+            <h3 class="category-title">Extracurricular Activity</h3>
+            <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">External Volunteer - JerseyCTF 2025</h3>
+                <p class="text-gray-400 text-sm md:text-base">NJIT - Ying Wu College of Computing</p>
+                <p class="text-gray-400 text-sm md:text-base">Mar 2025 - May 2025</p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Designed and reviewed cryptography challenges for NJIT's Capture the Flag competition</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mb-8">
+                <h3 class="category-title">Academic Projects</h3>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">Examining User Behavior and Trust in Free VPN Services</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Beyond-the-Price-Tag-Examining-User-Behavior-and-Trust-in-Free-VPN-Services">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Investigated user trust in free VPN services through a primary survey of 94 general users and a secondary survey of 16 security-aware users with cybersecurity expertise</li>
+                    <li>Utilized XeLaTeX, Likert scale, thematic analysis, and stratified sampling</li>
+                </ul>
+                </div>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">Salesforce Application Audit Report</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Salesforce-Application-Security-Audit-Report">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Created a complete audit plan for a hypothetical Salesforce application including risk, compliance, and mitigation analysis</li>
+                    <li>Utilized XeLaTeX, Permission Set Analyzer, OWASP ZAP, Checkmarx vulnerability scanner</li>
+                </ul>
+                </div>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">Energy Consumption Prediction on AWS</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Energy-Consumption-Prediction-System-in-AWS-Cloud">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Designed energy prediction model using Apache Spark and Hadoop in EMR clusters (4-node parallel processing)</li>
+                    <li>Utilized MLlib, PySpark, Python, and Docker for containerization</li>
+                </ul>
+                </div>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">AWS Cloud Image Recognition</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/AWS_Imagerecog">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Developed an AWS-based application using Rekognition and Textract APIs to detect faces and extract license text</li>
+                    <li>Utilized AWS S3, EC2, and Java</li>
+                </ul>
+                </div>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">Network Defense Simulation</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Network-defense-simulation">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Integrated Security Onion with pfSense in a virtual lab to simulate alert generation and traffic filtering</li>
+                    <li>Utilized Kibana dashboards for visualization through custom Lucene queries, Suricata/Snort NIDS, Metasploit framework, pfSense WAF</li>
+                </ul>
+                </div>
+                <div class="card">
+                <h3 class="text-base md:text-lg font-semibold">Buffer Overflow Assessments with GDB</h3>
+                <p class="text-gray-400 text-sm md:text-base"><a href="https://github.com/KDShetty11/Buffer-overflow-assessments-with-GDB">GitHub</a></p>
+                <ul class="list-disc list-inside mt-2 text-sm md:text-base">
+                    <li>Investigated memory protection bypasses in binaries using GDB with DEP, ASLR, and SSP enabled</li>
+                    <li>Utilized GNU Debugger, C++, x86 Assembly, Perl</li>
+                </ul>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <footer class="bg-gray-900 text-center py-4 mt-12">
