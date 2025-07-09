@@ -498,8 +498,7 @@
         <p class="text-gray-400 text-sm">&copy; 2025 Kurudunje Deekshith Shetty. All rights reserved.</p>
     </footer>
 
-    <  <script>
-        // Hamburger menu toggle
+    <script>
         document.querySelector('.menu-button').addEventListener('click', () => {
             document.querySelector('#nav-links').classList.toggle('active');
             document.querySelector('#menu-toggle').checked = !document.querySelector('#menu-toggle').checked;
@@ -511,17 +510,16 @@
                 const sectionId = this.getAttribute('href').substring(1);
                 const section = document.getElementById(sectionId);
                 if (section) {
-                    const navbarHeight = 64; // Fixed navbar height
+                    const navbarHeight = 64; 
                     const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
                     const viewportHeight = window.innerHeight;
-                    const scrollPosition = sectionTop + 74;
+                    const scrollPosition = sectionTop - viewportHeight - navbarHeight;
 
                     window.scrollTo({
                         top: scrollPosition,
                         behavior: 'smooth'
                     });
 
-                    // Close hamburger menu on mobile
                     document.querySelector('#nav-links').classList.remove('active');
                     document.querySelector('#menu-toggle').checked = false;
                 }
