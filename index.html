@@ -505,8 +505,7 @@
             document.querySelector('#menu-toggle').checked = !document.querySelector('#menu-toggle').checked;
         });
 
-        // Smooth scroll to section and center in viewport
-        document.querySelectorAll('#nav-links a').forEach(anchor => {
+         document.querySelectorAll('#nav-links a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const sectionId = this.getAttribute('href').substring(1);
@@ -515,7 +514,7 @@
                     const navbarHeight = 64; // Fixed navbar height
                     const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
                     const viewportHeight = window.innerHeight;
-                    const scrollPosition = sectionTop - (viewportHeight / 2) + (section.offsetHeight / 2) - navbarHeight;
+                    const scrollPosition = sectionTop - (viewportHeight / 2) - navbarHeight;
 
                     window.scrollTo({
                         top: scrollPosition,
