@@ -10,6 +10,7 @@
             background-color: #1a1a1a;
             color: #e0e0e0;
             font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
         }
         .navbar {
             background-color: #2d2d2d;
@@ -112,8 +113,17 @@
             .section-title {
                 font-size: 1.3rem;
             }
+            .category-title {
+                font-size: 1.1rem;
+            }
             .card {
                 padding: 0.8rem;
+            }
+            .card h3 {
+                font-size: 1rem;
+            }
+            .card p, .card li {
+                font-size: 0.85rem;
             }
             h1.text-4xl {
                 font-size: 1.8rem;
@@ -488,9 +498,35 @@
         <p class="text-gray-400 text-sm">&copy; 2025 Kurudunje Deekshith Shetty. All rights reserved.</p>
     </footer>
 
-    <script>
+    <  <script>
+        // Hamburger menu toggle
         document.querySelector('.menu-button').addEventListener('click', () => {
             document.querySelector('#nav-links').classList.toggle('active');
+            document.querySelector('#menu-toggle').checked = !document.querySelector('#menu-toggle').checked;
+        });
+
+        // Smooth scroll to section and center in viewport
+        document.querySelectorAll('#nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href').substring(1);
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const navbarHeight = 64; // Fixed navbar height
+                    const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+                    const viewportHeight = window.innerHeight;
+                    const scrollPosition = sectionTop - (viewportHeight / 2) + (section.offsetHeight / 2) - navbarHeight;
+
+                    window.scrollTo({
+                        top: scrollPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Close hamburger menu on mobile
+                    document.querySelector('#nav-links').classList.remove('active');
+                    document.querySelector('#menu-toggle').checked = false;
+                }
+            });
         });
     </script>
 </body>
