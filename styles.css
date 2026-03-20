@@ -615,6 +615,32 @@ section {
 }
 .project-link:hover { color: var(--accent); }
 
+/* Professional project section labels */
+.projects-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin-bottom: 16px;
+  margin-top: 20px;
+}
+
+/* Professional project card accent */
+.project-card.professional {
+  border-left: 3px solid var(--accent);
+}
+
+/* Employer tag on professional projects */
+.project-employer {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 12px;
+  padding: 4px 10px;
+  background: var(--accent-dim);
+  border-radius: 4px;
+}
+
 /* ===== Skills Section ===== */
 .skills-grid {
   display: grid;
