@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurudunje Deekshith Shetty — Cybersecurity & Cloud Specialist</title>
-    <meta name="description" content="Portfolio of Kurudunje Deekshith Shetty — Lead Cybersecurity & Cloud Specialist with 3+ years of experience in cloud security, SOC operations, and DevSecOps.">
+    <meta name="description" content="Portfolio of Kurudunje Deekshith Shetty — Security Engineer with 3+ years in threat detection, incident response, and cloud security across enterprise environments.">
     <meta name="theme-color" content="#0a0a0f">
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Kurudunje Deekshith Shetty — Cybersecurity & Cloud Specialist">
-    <meta property="og:description" content="Lead Cybersecurity & Cloud Specialist with 3+ years of experience in cloud security, SOC operations, and DevSecOps.">
+    <meta property="og:description" content="Security Engineer with 3+ years in threat detection, incident response, and cloud security across enterprise environments.">
     <meta property="og:url" content="https://kdshetty11.github.io/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Kurudunje Deekshith Shetty — Cybersecurity & Cloud Specialist">
-    <meta name="twitter:description" content="Lead Cybersecurity & Cloud Specialist with 3+ years of experience in cloud security, SOC operations, and DevSecOps.">
+    <meta name="twitter:description" content="Security Engineer with 3+ years in threat detection, incident response, and cloud security across enterprise environments.">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0f' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%2300e68a'>KD</text></svg>">
     <link rel="stylesheet" href="styles.css">
@@ -73,9 +73,9 @@
             </div>
             <div class="about-content">
                 <div class="about-text reveal">
-                    <p>I'm a cybersecurity professional with 3+ years securing healthcare infrastructure and enterprise environments across AWS/Azure. Currently leading cloud security architecture at Medlaunch Concepts &mdash; I improved security posture from 600 to 900, architected multi-environment AWS infrastructure from scratch, and closed 85% of SOC 2/HIPAA compliance gaps in under 4 months.</p>
-                    <p>Previously, I triaged 1,200+ security events annually and investigated 15+ incidents (ransomware, DDoS, phishing) as a SOC analyst at Terralogic, where I reduced false positive rates by 60% and mentored junior analysts. M.Sc. in Cybersecurity &amp; Privacy from NJIT (3.9 GPA), CompTIA Security+ certified.</p>
-                    <p>Beyond work, I'm passionate about cybersecurity education &mdash; I've mentored 45+ graduate students in cryptography, trained 60+ high school students through bootcamp, and designed CTF challenges for JerseyCTF V (120+ teams).</p>
+                    <p>I'm a security engineer with 3+ years across threat detection, incident response, and cloud security. I served as de facto L2 shift lead, engineering SentinelOne EDR, Stellar Cyber XDR, and LogRhythm SIEM across 8 environments &mdash; building 80+ correlation rules and custom regex filters to reduce false positives by 60%.</p>
+                    <p>Currently sole owner of production AWS infrastructure for a healthcare platform &mdash; I closed 85% of SOC 2/HIPAA compliance gaps in 4 months, reduced standing admin access by 80%, and led RCA for multiple ransomware incidents. M.Sc. in Cybersecurity &amp; Privacy from NJIT (3.9 GPA), CompTIA Security+ certified.</p>
+                    <p>Beyond work, I'm passionate about cybersecurity education &mdash; I've mentored 45+ graduate students in cryptography, trained 60+ high school students through bootcamp, and designed CTF challenges for JerseyCTF V.</p>
                 </div>
                 <!-- Uncomment and add your photo when ready:
                 <div class="reveal-right" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
@@ -116,13 +116,14 @@
                         <div class="timeline-role">Lead Cybersecurity/Cloud Specialist (promoted from Intern)</div>
                         <div class="timeline-company">Medlaunch Concepts, Clearwater, FL</div>
                         <ul class="timeline-bullets">
-                            <li>Architected multi-environment AWS infrastructure (dev/staging/production) from scratch — VPC topologies, ECS/ECR containerized deployments, ALBs with TLS, Route 53 DNS. Sole owner of all production deployments serving the platform's full user base.</li>
-                            <li>Conducted STRIDE threat modeling and implemented defense-in-depth — WAF with custom OWASP Top 10 rules, GuardDuty for runtime threat detection, CloudTrail + Security Hub for compliance monitoring. Closed 85% of SOC 2/HIPAA compliance gaps in under 4 months.</li>
+                            <li>Engineered defense-in-depth &mdash; WAF with default-Block allowlist and 5 custom rules, Macie for weekly PHI/PII scanning, GuardDuty for runtime threat detection, CloudTrail + Security Hub for continuous compliance. Deployed PHI audit middleware logging all requests to 19 route prefixes. Closed 85% of SOC 2/HIPAA gaps in 4 months.</li>
+                            <li>Built 3 audit log pipelines: GitHub org webhooks via API Gateway with HMAC-SHA256 verification, Entra ID sign-in logs via Graph API, and MongoDB Atlas audit via VPC-deployed Lambda through NAT Gateway. S3 Object Lock with 365-day Governance retention for tamper-proof log storage.</li>
                         </ul>
                         <div class="timeline-extra">
                             <ul class="timeline-bullets">
-                                <li>Administering Azure AD/Entra ID for org-wide SSO across 40+ users. Designed least-privilege RBAC with federated auth (SAML, OIDC) — reduced standing admin access by 80% through conditional access and just-in-time provisioning.</li>
-                                <li>Established secure SDLC — integrated Semgrep SAST and OWASP ZAP DAST into GitHub Actions CI/CD with 100% deployment coverage. Scanning identified 120+ vulnerabilities; 100% critical/high remediation rate.</li>
+                                <li>Architected multi-environment AWS infrastructure (dev/staging/prod) &mdash; VPC topologies, ECS/ECR, ALBs with TLS via ACM, Route 53 DNS. Sole owner of all production deployments.</li>
+                                <li>Administering Entra ID SSO for 40+ users with SAML/OIDC federation. Enforced MFA via IAM policy for 12 console users. Managed credential lifecycle through AWS Secrets Manager. Reduced standing admin access by 80%.</li>
+                                <li>Integrated Semgrep SAST and OWASP ZAP DAST into GitHub Actions CI/CD. Deployed Gitleaks secret scanning and branch protection auto-revert across 15 repositories. Identified 120+ vulnerabilities; 100% critical/high remediation rate.</li>
                             </ul>
                         </div>
                         <button class="timeline-toggle">[ + more details ]</button>
@@ -155,14 +156,13 @@
                         <div class="timeline-role">Cyber Security Analyst (promoted from Intern)</div>
                         <div class="timeline-company">Terralogic Software Solutions, Bengaluru, IN</div>
                         <ul class="timeline-bullets">
-                            <li>Triaged 1,200+ security events annually across 5+ client environments using LogRhythm SIEM and Stellar Cyber XDR. Tuned 80+ correlation rules, reducing false positive rate by 60% and triage time from 30 min to under 10 min per alert.</li>
-                            <li>Investigated 15+ security incidents (ransomware, DDoS, phishing) end-to-end. Extracted 45+ unique IOCs feeding threat intelligence databases shared across client environments.</li>
+                            <li>Served as de facto L2 shift lead triaging 1,200+ events/year across enterprise clients (Fortune 500 automotive, multinational telecom) using LogRhythm SIEM, Stellar Cyber XDR, and SentinelOne EDR. Engineered 80+ correlation rules and custom regex-based triage filters, reducing false positive rate by 60% and mean triage time from 30 to under 10 minutes.</li>
+                            <li>Led 15+ incident investigations including multiple ransomware engagements &mdash; conducted memory dumps, disk imaging, and IOC extraction. Delivered root cause analysis (RCA) reports identifying attack vectors and recommending remediations. Fed 45+ unique IOCs into threat intelligence databases shared across 8 client environments.</li>
                         </ul>
                         <div class="timeline-extra">
                             <ul class="timeline-bullets">
-                                <li>Conducted proactive threat hunts using SIEM log analysis and IOC correlation — queried for anomalous authentication patterns, lateral movement indicators, and C2 beacon signatures.</li>
-                                <li>Authored 25+ MITRE ATT&CK-mapped playbooks covering 12 threat tactics. Built Grafana dashboards for real-time metrics. Mentored junior SOC analysts and interns on alert triage and incident handling.</li>
-                                <li>Deployed Palo Alto NGFW and Radware WAF across client environments. Managed bi-weekly vulnerability scanning (Nessus, Qualys) with 85% critical/high remediation rate within 30-day SLA.</li>
+                                <li>Deployed and integrated SentinelOne EDR, Stellar Cyber XDR, and LogRhythm SIEM &mdash; led tool migrations, onboarded 85+ log sources, and built cross-platform integrations with Palo Alto NGFW and Radware WAF. Managed bi-weekly vulnerability scanning (Nessus, Qualys) achieving 85% critical/high remediation within 30-day SLA.</li>
+                                <li>Managed real-time SOC operations as shift lead, serving as L2 escalation point. Authored 25+ MITRE ATT&CK-mapped playbooks covering 12 threat tactics with automated alert enrichment workflows. Led knowledge transfer for new hires and mentored junior analysts on threat classification methodology.</li>
                             </ul>
                         </div>
                         <button class="timeline-toggle">[ + more details ]</button>
@@ -187,7 +187,7 @@
                     <div class="timeline-card">
                         <div class="timeline-date">2024 & 2025</div>
                         <div class="timeline-role">Cybersecurity Bootcamp Instructor</div>
-                        <div class="timeline-company">NJIT Outreach — Ying Wu College of Computing</div>
+                        <div class="timeline-company">NJIT STEMX — Ying Wu College of Computing</div>
                         <ul class="timeline-bullets">
                             <li>Trained 60+ high school students across 2 cohorts. Designed 6 progressive curriculum modules with 12 hands-on labs covering encryption, network security, and ethical hacking.</li>
                         </ul>
@@ -200,7 +200,7 @@
                         <div class="timeline-role">CTF Challenge Designer — JerseyCTF V</div>
                         <div class="timeline-company">NJIT — Cryptography Track</div>
                         <ul class="timeline-bullets">
-                            <li>Authored 5 cryptography challenges for JerseyCTF V (120+ teams). Designed progressive difficulty achieving 65%/28%/8% solve rates across beginner/intermediate/advanced tiers.</li>
+                            <li>Authored 5 cryptography challenges for JerseyCTF V. Designed progressive difficulty achieving 65%/28%/8% solve rates across beginner/intermediate/advanced tiers.</li>
                         </ul>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                 <div class="project-card professional reveal">
                     <div class="project-icon">&#128737;</div>
                     <h3 class="project-title">HIPAA & SOC 2 Type 2 Compliance Automation</h3>
-                    <p class="project-desc">Engineered and deployed 60+ compliance controls across 5 platforms (AWS, GitHub, MongoDB, M365, Entra ID) &mdash; Gitleaks secret scanning, PR review enforcement, CloudTrail audit logging, conditional access policies, and credential rotation. Closed 45 compliance gaps mapped to SOC 2 CC-series and HIPAA 164.312 safeguards, reducing manual audit effort by 70%.</p>
+                    <p class="project-desc">Automated compliance control deployment across 5 platforms (AWS, GitHub, MongoDB, M365, Entra ID) using IaC and GitHub Actions workflows. Produced 18+ audit-ready evidence documents covering SOC 2 CC-series and HIPAA 164.312 safeguards, reducing manual audit preparation by 70%.</p>
                     <div class="project-tags">
                         <span>AWS</span>
                         <span>GitHub Actions</span>
@@ -236,7 +236,7 @@
                 <div class="project-card professional reveal">
                     <div class="project-icon">&#129302;</div>
                     <h3 class="project-title">AI-Augmented DevOps & Agentic Automation</h3>
-                    <p class="project-desc">Leveraged agentic AI tooling (Claude Code) to accelerate infrastructure-as-code development, automate deployment scripts, and maintain CI/CD pipelines &mdash; reducing deployment cycle time from 4 hours (manual) to 12 minutes (AI-assisted), a 95% improvement while preserving human-in-the-loop review for all production changes.</p>
+                    <p class="project-desc">Used Claude Code for IaC development and CI/CD automation, reducing deployment cycle from 4 hours to 12 minutes (95% improvement) while preserving human-in-the-loop review for all production changes.</p>
                     <div class="project-tags">
                         <span>Claude Code</span>
                         <span>GitHub Actions</span>
@@ -533,13 +533,6 @@
                     <div class="cert-info">
                         <h3>Stellar Cyber Certified XDR Associate</h3>
                         <p>2022</p>
-                    </div>
-                </div>
-                <div class="cert-card reveal">
-                    <div class="cert-icon">&#128218;</div>
-                    <div class="cert-info">
-                        <h3>Pursuing: CCSP (Certified Cloud Security Professional)</h3>
-                        <p></p>
                     </div>
                 </div>
             </div>

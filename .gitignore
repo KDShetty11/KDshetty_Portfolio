@@ -1,0 +1,7 @@
+main.tex
+resumes/
+decode_message.py
+*.aux
+*.log
+*.out
+*.synctex.gz
