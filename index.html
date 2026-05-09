@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurudunje Deekshith Shetty — Cybersecurity & Cloud Specialist</title>
-    <meta name="description" content="Portfolio of Kurudunje Deekshith Shetty — Security Engineer with 3+ years in threat detection, incident response, and cloud security across enterprise environments.">
+    <meta name="description" content="Portfolio of Kurudunje Deekshith Shetty — Security Engineer with 3+ years across application security, AWS cloud security, and detection engineering. Sole security lead for a HIPAA-regulated healthcare SaaS.">
     <meta name="theme-color" content="#0a0a0f">
     <!-- Open Graph / Social Sharing -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Kurudunje Deekshith Shetty — Cybersecurity & Cloud Specialist">
-    <meta property="og:description" content="Security Engineer with 3+ years in threat detection, incident response, and cloud security across enterprise environments.">
+    <meta property="og:description" content="Security Engineer with 3+ years across application security, AWS cloud security, and detection engineering. Sole security lead for a HIPAA-regulated healthcare SaaS.">
     <meta property="og:url" content="https://kdshetty11.github.io/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Kurudunje Deekshith Shetty — Cybersecurity & Cloud Specialist">
-    <meta name="twitter:description" content="Security Engineer with 3+ years in threat detection, incident response, and cloud security across enterprise environments.">
+    <meta name="twitter:description" content="Security Engineer with 3+ years across application security, AWS cloud security, and detection engineering. Sole security lead for a HIPAA-regulated healthcare SaaS.">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0a0f' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%2300e68a'>KD</text></svg>">
     <link rel="stylesheet" href="styles.css">
@@ -73,8 +73,8 @@
             </div>
             <div class="about-content">
                 <div class="about-text reveal">
-                    <p>I'm a security engineer with 3+ years across threat detection, incident response, and cloud security. I served as de facto L2 shift lead, engineering SentinelOne EDR, Stellar Cyber XDR, and LogRhythm SIEM across 8 environments &mdash; building 80+ correlation rules and custom regex filters to reduce false positives by 60%.</p>
-                    <p>Currently sole owner of production AWS infrastructure for a healthcare platform &mdash; I closed 85% of SOC 2/HIPAA compliance gaps in 4 months, reduced standing admin access by 80%, and led RCA for multiple ransomware incidents. M.Sc. in Cybersecurity &amp; Privacy from NJIT (3.9 GPA), CompTIA Security+ certified.</p>
+                    <p>I'm a security engineer with 3+ years across application security, AWS cloud security, and detection engineering. As the sole security partner for a HIPAA-regulated healthcare SaaS, I led a third-party pentest engagement to a <strong>0-Critical / 0-High</strong> result, remediated <strong>500+ AWS Security Hub findings</strong>, and shipped <strong>127 security patches</strong> across backend, SPA, and LLM agent codebases.</p>
+                    <p>Before Medlaunch, I spent 2.5 years as de facto L2 SOC shift lead at Terralogic &mdash; engineering SentinelOne EDR, Stellar Cyber XDR, and LogRhythm SIEM across 8 client environments, building 80+ correlation rules to cut false positives by 60%, and leading 15+ ransomware investigations. M.Sc. in Cybersecurity &amp; Privacy from NJIT (3.9 GPA), CompTIA Security+ certified.</p>
                     <p>Beyond work, I'm passionate about cybersecurity education &mdash; I've mentored 45+ graduate students in cryptography, trained 60+ high school students through bootcamp, and designed CTF challenges for JerseyCTF V.</p>
                 </div>
                 <!-- Uncomment and add your photo when ready:
@@ -116,14 +116,14 @@
                         <div class="timeline-role">Lead Cybersecurity/Cloud Specialist (promoted from Intern)</div>
                         <div class="timeline-company">Medlaunch Concepts, Clearwater, FL</div>
                         <ul class="timeline-bullets">
-                            <li>Engineered defense-in-depth &mdash; WAF with default-Block allowlist and 5 custom rules, Macie for weekly PHI/PII scanning, GuardDuty for runtime threat detection, CloudTrail + Security Hub for continuous compliance. Deployed PHI audit middleware logging all requests to 19 route prefixes. Closed 85% of SOC 2/HIPAA gaps in 4 months.</li>
-                            <li>Built 3 audit log pipelines: GitHub org webhooks via API Gateway with HMAC-SHA256 verification, Entra ID sign-in logs via Graph API, and MongoDB Atlas audit via VPC-deployed Lambda through NAT Gateway. S3 Object Lock with 365-day Governance retention for tamper-proof log storage.</li>
+                            <li>Engineered AWS defense-in-depth for HIPAA-regulated healthcare SaaS &mdash; WAF (default-Block + 5 custom rules), Macie weekly PHI/PII classification, GuardDuty, Inspector ECR scanning, CloudTrail + Security Hub, PHI audit middleware on 19 route prefixes. <strong>Remediated 500+ Security Hub findings</strong>; closed 85% of SOC 2/HIPAA gaps in 4 months. Authored NIST SP 800-30 risk assessment mapping 16 assets &times; 18 vulnerabilities to HIPAA safeguards.</li>
+                            <li>Led pre-pentest hardening across backend (Express/Mongo), SPA (React), and LLM agent (FastAPI/Bedrock) repos &mdash; shipped <strong>127 security patches</strong>: JWT HS256 algorithm pinning + sessionVersion revocation, double-submit CSRF, IDOR org-scoping, ReDoS escapes in 11 Mongo $regex sites, AWS metadata SSRF block, HttpOnly cookie auth migration, prompt-injection envelope wrapping for LLM tool outputs. <strong>Casco third-party pentest result: 0 Critical / 0 High / 2 Medium / 4 Informational</strong>, all remediated.</li>
                         </ul>
                         <div class="timeline-extra">
                             <ul class="timeline-bullets">
-                                <li>Architected multi-environment AWS infrastructure (dev/staging/prod) &mdash; VPC topologies, ECS/ECR, ALBs with TLS via ACM, Route 53 DNS. Sole owner of all production deployments.</li>
-                                <li>Administering Entra ID SSO for 40+ users with SAML/OIDC federation. Enforced MFA via IAM policy for 12 console users. Managed credential lifecycle through AWS Secrets Manager. Reduced standing admin access by 80%.</li>
-                                <li>Integrated Semgrep SAST and OWASP ZAP DAST into GitHub Actions CI/CD. Deployed Gitleaks secret scanning and branch protection auto-revert across 15 repositories. Identified 120+ vulnerabilities; 100% critical/high remediation rate.</li>
+                                <li>Architected multi-environment AWS (dev/staging/prod) &mdash; VPC with private subnets, ECS/ECR, ALB + ACM TLS, Route 53, VPC peering to Atlas. Built 3 audit log pipelines: GitHub org webhooks via API Gateway + HMAC-SHA256 Lambda, Entra ID via Graph API, MongoDB Atlas via VPC-deployed Lambda through NAT Gateway. S3 Object Lock 365-day Governance for tamper-proof storage.</li>
+                                <li>Designed zero-standing-admin AWS Identity Center + GitHub OIDC architecture &mdash; tag-scoped permission sets per persona, JIT login via SSO (8s flow &rarr; 4h auto-expiring creds), task-role rotation ~6h. Administering Entra ID SSO for 40+ users; enforced MFA via IAM for 12 console users. AWS IAM audit of 70+ roles / 20 users / 60+ S3 buckets remediated 4 Critical + 6 High findings.</li>
+                                <li>Integrated Semgrep SAST + OWASP ZAP DAST + Gitleaks across 15 GitHub repos with branch-protection auto-revert. 120+ vulnerabilities identified across SAST/DAST/dependency runs; 100% critical/high remediation rate.</li>
                             </ul>
                         </div>
                         <button class="timeline-toggle">[ + more details ]</button>
@@ -219,6 +219,20 @@
             <p class="projects-section-label reveal">// professional projects</p>
 
             <div class="projects-grid">
+                <div class="project-card professional reveal">
+                    <div class="project-icon">&#128300;</div>
+                    <h3 class="project-title">Pentest Hardening & NIST 800-30 Risk Assessment</h3>
+                    <p class="project-desc">Authored NIST SP 800-30 risk assessment mapping 16 assets, 6 threat sources, and 18 vulnerabilities to HIPAA safeguards (2 Critical / 9 High / 8 Medium / 2 Low). Led 26 pre-pentest hardening commits across 3 repos covering OWASP Top 10 and OWASP Top 10 LLM. Casco third-party pentest result: <strong>0 Critical, 0 High, 2 Medium, 4 Informational</strong> &mdash; all resolved within 2 weeks.</p>
+                    <div class="project-tags">
+                        <span>Pentest Hardening</span>
+                        <span>NIST 800-30</span>
+                        <span>OWASP Top 10</span>
+                        <span>OWASP LLM</span>
+                        <span>HIPAA</span>
+                    </div>
+                    <span class="project-employer">Medlaunch Concepts</span>
+                </div>
+
                 <div class="project-card professional reveal">
                     <div class="project-icon">&#128737;</div>
                     <h3 class="project-title">HIPAA & SOC 2 Type 2 Compliance Automation</h3>
@@ -411,14 +425,20 @@
                     <div class="skill-category-title">&#9729; Cloud & IAM</div>
                     <div class="skill-chips">
                         <span>AWS IAM</span>
+                        <span>Identity Center</span>
                         <span>Security Hub</span>
                         <span>GuardDuty</span>
+                        <span>Inspector</span>
+                        <span>Macie</span>
                         <span>CloudTrail</span>
                         <span>CloudWatch</span>
                         <span>WAF & Shield</span>
                         <span>KMS</span>
-                        <span>Macie</span>
+                        <span>Secrets Manager</span>
+                        <span>S3 Object Lock</span>
+                        <span>Bedrock</span>
                         <span>Azure AD / Entra ID</span>
+                        <span>GitHub OIDC</span>
                         <span>SAML</span>
                         <span>OIDC</span>
                         <span>Zero Trust</span>
@@ -450,6 +470,8 @@
                         <span>Gitleaks</span>
                         <span>Burp Suite</span>
                         <span>Metasploit</span>
+                        <span>Multi-agent Code Review</span>
+                        <span>Pentest Hardening</span>
                     </div>
                 </div>
 
@@ -484,12 +506,16 @@
                 <div class="skill-category reveal">
                     <div class="skill-category-title">&#128220; Frameworks & Compliance</div>
                     <div class="skill-chips">
+                        <span>SOC 2</span>
+                        <span>HIPAA</span>
                         <span>ISO 27001</span>
                         <span>HITRUST</span>
                         <span>NIST CSF</span>
+                        <span>NIST SP 800-30</span>
                         <span>NIST 800-63B</span>
                         <span>MITRE ATT&CK</span>
                         <span>OWASP Top 10</span>
+                        <span>OWASP LLM Top 10</span>
                         <span>CIS Controls</span>
                         <span>STRIDE</span>
                     </div>
