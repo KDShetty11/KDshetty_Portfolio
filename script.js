@@ -15,10 +15,11 @@ document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => 
 const typingEl = document.getElementById('typing-text');
 const phrases = [
   'Cloud Security & AWS Architecture',
+  'Application Security & Pentest Hardening',
+  'AI / LLM Agent Security',
   'DevSecOps & CI/CD Pipeline Security',
-  'SIEM/XDR Threat Detection',
-  'Healthcare Data Protection',
-  'Incident Response & Digital Forensics'
+  'SOC Detection, Forensics & Response',
+  'SOC 2 / HIPAA Compliance & Risk'
 ];
 let phraseIndex = 0;
 let charIndex = 0;

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Security — Kurudunje Deekshith Shetty</title>
+    <meta name="description" content="Application security domain: an auth/session rebuild from browser-stored JWTs to HttpOnly cookies, a server-side authorization model, input-validation and SSRF defense, reusable security frameworks, and a systematic OWASP Top 10 (decade) + OWASP LLM Top 10 review on a HIPAA healthcare SaaS.">
+    <meta name="theme-color" content="#0a0e14">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0e14' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%239fef00'>KD</text></svg>">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="nav-logo"><span>KD</span>Shetty</a>
+            <div class="nav-links">
+                <a href="../../index.html#about">About</a>
+                <a href="../../index.html#experience">Experience</a>
+                <a href="../../index.html#projects">Domains</a>
+                <a href="../../index.html#skills">Skills</a>
+                <a href="../../index.html#contact">Contact</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="cs-page">
+        <div class="container">
+            <a href="../../index.html#projects" class="cs-back">&larr; All security domains</a>
+
+            <div class="reveal">
+                <div class="cs-hero-eyebrow">Application Security &middot; Medlaunch Concepts</div>
+                <h1>Rebuilding the App's Security Posture</h1>
+                <p class="cs-lede">I own secure development across the whole platform &mdash; an Express/Mongo backend, a React SPA, a FastAPI/Bedrock LLM agent, and the ETL pipelines behind them. The work that mattered wasn't bumping dependencies; it was re-architecting how the app authenticates, authorizes, and trusts input, then proving it against a third-party pentest with a clean result.</p>
+                <p class="cs-context-tag">Codebases: Node/Express &middot; React/Vite &middot; Python/FastAPI &nbsp;&middot;&nbsp; Independent third-party pentest</p>
+            </div>
+
+            <div class="cs-statbar reveal">
+                <div class="stat-card"><div class="stat-number">362</div><div class="stat-label">Endpoints audited</div></div>
+                <div class="stat-card"><div class="stat-number">127</div><div class="stat-label">Documented, reasoned fixes</div></div>
+                <div class="stat-card"><div class="stat-number">OWASP</div><div class="stat-label">Top 10 (10-yr) + LLM reviewed</div></div>
+                <div class="stat-card"><div class="stat-number">0 / 0</div><div class="stat-label">Pentest Critical / High</div></div>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>The auth &amp; session rebuild</h2>
+                <p><strong>Before:</strong> the SPA minted JWTs and kept them in the browser where JavaScript could read them, the token payload carried each user's full organization list, sessions had no server-side kill switch, and the verifier didn't pin an algorithm. Net effect: a single XSS meant full account takeover, a stolen token stayed valid until expiry, logout didn't actually end a session, and the token was trivially bloated and tamper-curious.</p>
+                <p><strong>What I changed:</strong></p>
+                <ul>
+                    <li>Moved access and refresh tokens into <strong>HttpOnly + Secure + SameSite cookies</strong> so client-side script can no longer read them &mdash; XSS stops being a credential-theft primitive.</li>
+                    <li>Scoped a <strong>parent cookie domain</strong> so the SPA and API subdomains share authentication cleanly, without widening cookie scope further than needed.</li>
+                    <li>Pinned <strong>JWT to HS256</strong> at every verification site, killing <code>alg:none</code> / algorithm-confusion forgery.</li>
+                    <li>Slimmed the token to a user identifier plus a <strong>sessionVersion</strong> claim; logout, password change, role removal, or a suspected breach increments the version and <strong>instantly invalidates every outstanding token</strong> &mdash; stateless revocation, no blocklist to operate.</li>
+                    <li>Added <strong>double-submit CSRF</strong>, because moving auth into cookies reintroduces CSRF &mdash; closed the door I'd just opened.</li>
+                </ul>
+                <div class="cs-diagram">
+                    <div class="dg-node">Request<small>HttpOnly cookie</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">CSRF<small>double-submit</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">JWT verify<small>HS256 pinned</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">sessionVersion<small>revocation</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node accent">assertInScope<small>org boundary</small></div>
+                </div>
+                <p class="dg-caption">// every state-changing request now runs the same reusable gauntlet before it touches data</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Authorization decided server-side, never by the client</h2>
+                <p>The most dangerous bugs weren't exotic &mdash; they were endpoints that trusted the caller. A request could carry an <code>orgId</code> in its body, or a guessable resource id, and the server would honor it: cross-tenant reads of another customer's compliance data, mutations of another org's records, even deletion of another tenant's stored images by passing their id. Classic IDOR / BOLA, and in a multi-tenant healthcare platform that's a breach.</p>
+                <p>I fixed the <em>pattern</em>, not just the instances: a single <strong><code>assertInScope</code></strong> authorization primitive that derives the tenant from the <strong>authenticated principal</strong> and refuses anything the caller tries to assert in the request body. It's enforced in the service layer on every cross-tenant path, privileged actions are gated by role, and post-mutation refetches were rewritten to stay tenant-scoped so no read could leak sideways. The rule is simple and absolute: <strong>authorization is computed from identity, never from attacker-controllable input.</strong></p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Treating all input as hostile</h2>
+                <ul>
+                    <li><strong>Validate at the edge:</strong> strict DTO/schema validation (type, shape, length, allowlisted enums) before input reaches business logic or the database &mdash; reject early, fail closed.</li>
+                    <li><strong>Encode for the sink:</strong> context-aware output encoding (HTML body vs attribute vs URL) and DOMPurify on every render sink, so data authored by one user can never execute in another's browser.</li>
+                    <li><strong>Neutralize injection:</strong> user input used inside Mongo <code>$regex</code> is literal-escaped to kill ReDoS; query construction avoids operator injection; uploaded/derived filenames are stripped of CRLF and path-traversal before they become HTTP headers or storage keys.</li>
+                    <li><strong>Contain server-side fetchers:</strong> the PDF renderer and file proxies are allowlisted so they can't be steered at internal services or the cloud instance-metadata endpoint &mdash; SSRF closed at the egress, not just the input.</li>
+                </ul>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Reusable frameworks, not one-off patches</h2>
+                <p>The durable value is the controls that make whole vulnerability classes structurally impossible &mdash; build once, enforce everywhere:</p>
+                <ul>
+                    <li><strong>Double-submit CSRF middleware</strong> with constant-time comparison and a careful exempt-list for session-boundary routes.</li>
+                    <li><strong>PHI audit middleware</strong> that records every access to PHI-handling routes (actor, org, path, status, request-id) for HIPAA §164.312(b).</li>
+                    <li><strong>Tiered rate limiting</strong> &mdash; global, per-route auth limits, and per-target limits on password-reset / MFA &mdash; to blunt brute force, credential stuffing, and MFA-fatigue.</li>
+                    <li><strong>Single-use, hashed tokens</strong> for email links and password resets (jti + TTL, stored hashed), and an <strong>S3 key path-traversal guard</strong> on anything that builds a storage key from user input.</li>
+                </ul>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>A systematic OWASP review &mdash; not just what a scanner flagged</h2>
+                <p>I reviewed the platform category by category against a <strong>decade of OWASP Top 10 lists (2013 &rarr; 2017 &rarr; 2021)</strong> and the <strong>OWASP Top 10 for LLM Applications</strong> &mdash; so coverage was driven by a threat model, not by whatever a tool happened to surface. A few of the mappings:</p>
+                <ul>
+                    <li><strong>A01 Broken Access Control</strong> &rarr; the <code>assertInScope</code> / RBAC work above.</li>
+                    <li><strong>A02 Cryptographic Failures</strong> &rarr; HttpOnly cookies, HS256 pinning, hashed reset tokens, TLS-only transport.</li>
+                    <li><strong>A03 Injection</strong> &rarr; ReDoS escaping, NoSQL operator safety, context-aware output encoding.</li>
+                    <li><strong>A05 Security Misconfiguration</strong> &rarr; security headers / CSP, debug endpoints and API docs disabled in production.</li>
+                    <li><strong>A07 Identification &amp; Auth Failures</strong> &rarr; MFA rate-limiting, session revocation, single-use links, removal of a hardcoded auth bypass.</li>
+                    <li><strong>LLM01 Prompt Injection</strong> &rarr; untrusted-content envelope around tool output; <strong>LLM02 Insecure Output Handling</strong> &rarr; output sanitizer; <strong>LLM06 Sensitive Disclosure</strong> &rarr; Safe Harbor PHI redaction; <strong>LLM08 Excessive Agency</strong> &rarr; per-tool RBAC and scoped tools.</li>
+                </ul>
+                <p>The catalog of <strong>127 documented fixes</strong> &mdash; each written up with its attack scenario, exploit, fix, and post-fix invariant &mdash; is the output of that sweep, not a list of dependency bumps.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>The result</h2>
+                <div class="cs-callout">
+                    <p><strong>Independent third-party Web Application &amp; API pentest: 0 Critical, 0 High, 2 Medium, 4 Informational. No PHI exposed.</strong></p>
+                </div>
+                <ul>
+                    <li><strong>The two Mediums</strong> were a refresh-token replay window (closed by the <code>sessionVersion</code> revocation framework) and a flagged public bucket that proved a false positive &mdash; it belonged to a different cloud account, demonstrated with an access-denied check.</li>
+                    <li>Informational items (CSP delivery, transport headers, a WebSocket origin allowlist) were closed in the following release.</li>
+                </ul>
+                <div class="cs-stack">
+                    <span>OWASP Top 10 (10-yr)</span><span>OWASP LLM Top 10</span><span>ASVS L2</span><span>Express / TypeScript</span><span>React</span><span>JWT</span><span>DOMPurify</span><span>Semgrep</span><span>Burp Suite</span>
+                </div>
+            </div>
+
+            <div class="cs-footer-nav reveal">
+                <a href="../ai-llm-security/" class="cs-link">Next: AI / LLM Security &rarr;</a>
+                <a href="../../index.html#projects" class="cs-link">All domains &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>&copy; 2026 Kurudunje Deekshith Shetty. All rights reserved.</p></div></footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+    <script src="../../script.js"></script>
+    <script src="../../assistant.js" defer></script>
+</body>
+</html>

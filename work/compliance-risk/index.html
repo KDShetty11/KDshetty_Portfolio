@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance & Risk — Kurudunje Deekshith Shetty</title>
+    <meta name="description" content="Compliance & risk domain: a NIST SP 800-30 risk assessment, SOC 2 / HIPAA control mappings, automated evidence generation (30 artifacts), and 20+ security policies for a HIPAA healthcare SaaS in SOC 2 Type II observation.">
+    <meta name="theme-color" content="#0a0e14">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0e14' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%239fef00'>KD</text></svg>">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="nav-logo"><span>KD</span>Shetty</a>
+            <div class="nav-links">
+                <a href="../../index.html#about">About</a>
+                <a href="../../index.html#experience">Experience</a>
+                <a href="../../index.html#projects">Domains</a>
+                <a href="../../index.html#skills">Skills</a>
+                <a href="../../index.html#contact">Contact</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="cs-page">
+        <div class="container">
+            <a href="../../index.html#projects" class="cs-back">&larr; All security domains</a>
+
+            <div class="reveal">
+                <div class="cs-hero-eyebrow">Compliance &amp; Risk &middot; Medlaunch Concepts</div>
+                <h1>Building the SOC 2 / HIPAA Program</h1>
+                <p class="cs-lede">I built the compliance program from the ground up &mdash; the control matrix across AWS, MongoDB, GitHub, and Azure/Entra, the NIST SP 800-30 risk assessment, the full policy and plan set (including BCDR and source-code escrow), and the evidence automation that proves it all. The platform is <strong>independently HIPAA-attested</strong> by a third-party AICPA-affiliated firm, with SOC 2 Type II observation underway (attestation expected within months).</p>
+                <p class="cs-context-tag">Frameworks: HIPAA Security Rule (third-party attested) &middot; SOC 2 Type II (observation in progress) &middot; NIST SP 800-30 / CSF &middot; ISO 27001 / HITRUST (drafted)</p>
+            </div>
+
+            <div class="cs-statbar reveal">
+                <div class="stat-card"><div class="stat-number">HIPAA</div><div class="stat-label">Attested</div></div>
+                <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Platforms in control matrix</div></div>
+                <div class="stat-card"><div class="stat-number">30</div><div class="stat-label">Audit-ready evidence docs</div></div>
+                <div class="stat-card"><div class="stat-number">20+</div><div class="stat-label">Policies &amp; plans authored</div></div>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>The control matrix, built from the ground up</h2>
+                <p>There was no program when I arrived &mdash; I built it. I designed and implemented the full control matrix across <strong>four platforms &mdash; AWS, MongoDB Atlas, GitHub, and Azure/Entra</strong> &mdash; translating SOC 2 and HIPAA requirements into concrete, enforced technical controls on each, then the operational plans around them: business continuity &amp; disaster recovery (BCDR) with RTO/RPO targets, source-code escrow, incident response, data retention, vendor management, and PHI de-identification. The outcome that matters: the platform is <strong>independently HIPAA-attested by a third-party AICPA-affiliated firm</strong>, and the same control set underpins the SOC 2 Type II observation now in progress (attestation expected within months) &mdash; with automated evidence cutting audit-prep time ~70%.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>NIST SP 800-30 risk assessment</h2>
+                <p>I authored a formal risk assessment covering <strong>16 assets, 6 threat sources, and 18 vulnerabilities</strong>, scored to <strong>2 Critical / 9 High / 8 Medium / 2 Low</strong> and mapped to HIPAA safeguards with a prioritized remediation plan and named owners. It turns "we found some issues" into a defensible, board-readable picture of risk &mdash; and it set the order in which the application-security and cloud hardening work actually happened. The assessment re-runs annually per HIPAA §164.308(a)(1).</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Control mappings</h2>
+                <ul>
+                    <li><strong>HIPAA Administrative (§164.308):</strong> security management process, designated security officer, workforce security with same-day offboarding revocation, role-based access, incident response with a severity taxonomy, BCDR with RTO/RPO commitments, and annual evaluation including an external pentest program.</li>
+                    <li><strong>HIPAA Technical (§164.312):</strong> unique IDs and auto-logoff, AES-256 at rest and TLS 1.2+ in transit, multi-region CloudTrail with log-file validation, application + database + source-control audit trails, integrity controls, and TLS-deny bucket policies for transmission security.</li>
+                    <li><strong>SOC 2 Trust Service Criteria (CC-series):</strong> CC6 logical access (MFA, RBAC, org scoping), CC7.2 monitoring (CloudWatch, GuardDuty, WAF), CC8.1 change management (PR review, secret scanning on every push).</li>
+                </ul>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Evidence automation &amp; policy</h2>
+                <p>I produced <strong>30 audit-ready evidence artifacts</strong> in an <code>evidence/</code> tree (MFA enforcement, branch segregation, PR-review enforcement, user lifecycle, workload identity, WAF rules, API-Gateway schema validation, CloudWatch alarms, and more), each mapped to its SOC 2 CC-series and HIPAA control &mdash; reducing manual audit-prep time by ~70%. I also authored a <strong>20+ document policy set</strong> (Information Security, Incident Response, Risk Assessment &amp; Treatment, Data Classification, PHI De-identification, BCDR, source-code escrow, Change Management, Vendor Management, SDLC, Access Control &amp; Termination, and the supporting governance charters).</p>
+                <div class="cs-callout">
+                    <p>The three tamper-proof audit-log pipelines (GitHub / Entra / Atlas &rarr; S3 Object Lock WORM) are the evidence engine behind these controls &mdash; immutable proof that the controls operate, not just exist. A compensating-controls package was accepted by the independent third-party assessor.</p>
+                </div>
+                <div class="cs-diagram">
+                    <div class="dg-node">Controls<small>AWS &middot; GitHub &middot; Entra &middot; Atlas</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">3 audit pipelines</div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">S3 Object Lock<small>WORM</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">Mapped evidence<small>SOC 2 &middot; HIPAA</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node accent">Independent<small>auditor</small></div>
+                </div>
+                <div class="cs-stack">
+                    <span>SOC 2 Type II</span><span>HIPAA §164.308 / 312</span><span>NIST SP 800-30</span><span>NIST CSF</span><span>ISO 27001</span><span>HITRUST</span><span>STRIDE</span><span>Evidence Automation</span>
+                </div>
+            </div>
+
+            <div class="cs-footer-nav reveal">
+                <a href="../security-operations/" class="cs-link">Next: Security Operations &amp; IR &rarr;</a>
+                <a href="../../index.html#projects" class="cs-link">All domains &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>&copy; 2026 Kurudunje Deekshith Shetty. All rights reserved.</p></div></footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+    <script src="../../script.js"></script>
+    <script src="../../assistant.js" defer></script>
+</body>
+</html>

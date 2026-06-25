@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kdshetty11.github.io/KDshetty_Portfolio/sitemap.xml

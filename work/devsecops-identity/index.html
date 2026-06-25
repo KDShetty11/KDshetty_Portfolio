@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSecOps, CI/CD & Identity — Kurudunje Deekshith Shetty</title>
+    <meta name="description" content="DevSecOps & identity domain: SAST/DAST/secret-scanning across 15 repos, supply-chain remediation, a zero-standing-admin AWS Identity Center + GitHub OIDC design, and custom offboarding-forensics and cloud-IDE tooling.">
+    <meta name="theme-color" content="#0a0e14">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0e14' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%239fef00'>KD</text></svg>">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="nav-logo"><span>KD</span>Shetty</a>
+            <div class="nav-links">
+                <a href="../../index.html#about">About</a>
+                <a href="../../index.html#experience">Experience</a>
+                <a href="../../index.html#projects">Domains</a>
+                <a href="../../index.html#skills">Skills</a>
+                <a href="../../index.html#contact">Contact</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="cs-page">
+        <div class="container">
+            <a href="../../index.html#projects" class="cs-back">&larr; All security domains</a>
+
+            <div class="reveal">
+                <div class="cs-hero-eyebrow">DevSecOps, CI/CD &amp; Identity &middot; Medlaunch Concepts</div>
+                <h1>Pipeline Security &amp; Zero-Standing-Admin</h1>
+                <p class="cs-lede">I secure the path from commit to production and the identities that travel it. That means SAST/DAST/secret-scanning gates across the org, supply-chain remediation, and an identity architecture designed so that long-lived keys and standing admin &mdash; the way one stolen laptop becomes a full breach &mdash; simply don't exist.</p>
+                <p class="cs-context-tag">Scope: GitHub org (15 repos) &middot; AWS Identity Center &middot; Entra ID / M365 &middot; MongoDB Atlas</p>
+            </div>
+
+            <div class="cs-statbar reveal">
+                <div class="stat-card"><div class="stat-number">15</div><div class="stat-label">Repos with security gates</div></div>
+                <div class="stat-card"><div class="stat-number">0</div><div class="stat-label">Long-lived CI keys</div></div>
+                <div class="stat-card"><div class="stat-number">8s &rarr; 4h</div><div class="stat-label">JIT login &rarr; expiring creds</div></div>
+                <div class="stat-card"><div class="stat-number">1 task / 6h</div><div class="stat-label">Worst-case blast radius</div></div>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>CI/CD security gates</h2>
+                <ul>
+                    <li><strong>SAST / DAST / secrets:</strong> Semgrep static analysis and OWASP ZAP DAST in GitHub Actions, with Gitleaks secret scanning across 15 repositories.</li>
+                    <li><strong>Change control:</strong> a <code>require-review.yml</code> workflow blocks self-approval (a non-author approval is required), and a branch-protection workflow <strong>auto-reverts direct pushes</strong> to <code>main</code>/<code>uat</code> within seconds &mdash; a compensating control I built because GitHub Free doesn't enforce branch protection on private repos.</li>
+                    <li><strong>Supply chain &amp; secrets:</strong> no long-lived cloud keys in CI &mdash; GitHub OIDC mints short-lived, per-workflow credentials, and Gitleaks blocks secrets before they reach history. Dependencies are pinned and patched against <em>known-exploitable</em> CVEs (including transitive pins), prioritized by reachability rather than chasing every low-severity advisory.</li>
+                </ul>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Zero-standing-admin identity design</h2>
+                <p>I designed an <strong>AWS Identity Center + GitHub OIDC</strong> target architecture to replace over-permissioned roles, persistent console users, and static keys in CI:</p>
+                <ul>
+                    <li><strong>Persona permission sets:</strong> 15 Identity Center groups (Admin, Security/Cloud, Backend, Frontend, AI-ML, Data Eng, Data Science, BI, plus UAT-only intern groups), each a tag-scoped permission set &mdash; e.g. a Backend Engineer reaches only their own team's tagged resources, with explicit <strong>Deny</strong> on production-DB actions and IAM user/key creation. Session durations 1h admin / 4h engineer.</li>
+                    <li><strong>Just-in-time access:</strong> <code>aws sso login</code> &mdash; an 8-second browser flow minting credentials that auto-expire in 4 hours; offboarding revokes all sessions in seconds.</li>
+                    <li><strong>GitHub OIDC instead of deploy keys:</strong> CI federates into AWS with a per-repo/branch/workflow/commit-signed token; assumed task-role credentials rotate roughly every 6 hours, so no long-lived secret sits in a pipeline.</li>
+                </ul>
+                <div class="cs-callout">
+                    <p>Threat-modeled end to end: RCE on one ECS task reaches only that task's tag-scoped role, CloudTrail logs it, GuardDuty flags it &mdash; <strong>blast radius: one task, one role, six hours</strong>, an estimated 80% cut in standing admin.</p>
+                </div>
+                <div class="cs-diagram">
+                    <div class="dg-node danger">RCE on 1 ECS task</div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">reads env<small>no AWS keys</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">scoped task-role<small>tag-bound &middot; ~6h</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">CloudTrail + GuardDuty<small>logged &middot; flagged</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node accent">Contained<small>1 task / 1 role / 6h</small></div>
+                </div>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Audits that drove the design</h2>
+                <p>The architecture came out of hands-on audits across every identity surface: an <strong>AWS IAM audit</strong> (70+ roles, 20 users, 60+ buckets &rarr; 4 Critical + 6 High, including over-broad service-account keys and a privilege-escalation pipeline role); a <strong>MongoDB Atlas audit</strong> (P0 fixes: enforce MFA, API IP-access-list, restrict employee data access; trimmed excess ORG_OWNERs); and a <strong>GitHub org audit</strong> (surfaced the private-repo branch-protection gap that the auto-revert workflow now compensates for). Codebase-level audits of the backend, frontend, and Clara mapped exactly which SDK clients break on a static-key-to-task-role migration.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Tooling I built</h2>
+                <ul>
+                    <li><strong><code>offboarding-evidence.py</code></strong> &mdash; a forensic tool that builds an evidence pack for a departing employee from the GitHub audit-log S3 bucket: every commit, PR, review, branch/tag, and membership change in a date range, emitted as a human-readable report plus raw JSONL. It's step 5 of the offboarding runbook.</li>
+                    <li><strong>Coder cloud-IDE platform</strong> &mdash; a 9-stage, reversible, dry-run-by-default deployment of a Coder control plane in AWS (private-subnet EC2, scoped IAM roles and security groups) so contractors and interns get ephemeral, monitored dev workspaces instead of source on personal machines &mdash; the core of a BYOD strategy.</li>
+                    <li><strong>github-traffic-monitor</strong> &mdash; a Lambda capturing clone/traffic signals to CloudWatch for visibility GitHub webhooks don't provide.</li>
+                </ul>
+                <div class="cs-stack">
+                    <span>GitHub Actions</span><span>Semgrep</span><span>OWASP ZAP</span><span>Gitleaks</span><span>GitHub OIDC</span><span>AWS Identity Center</span><span>Entra ID / Intune</span><span>Terraform</span><span>Atlas</span><span>Coder</span><span>Python / boto3</span><span>Zero Trust</span>
+                </div>
+            </div>
+
+            <div class="cs-footer-nav reveal">
+                <a href="../compliance-risk/" class="cs-link">Next: Compliance &amp; Risk &rarr;</a>
+                <a href="../../index.html#projects" class="cs-link">All domains &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>&copy; 2026 Kurudunje Deekshith Shetty. All rights reserved.</p></div></footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+    <script src="../../script.js"></script>
+    <script src="../../assistant.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI / LLM Security — Kurudunje Deekshith Shetty</title>
+    <meta name="description" content="AI/LLM security domain: securing a healthcare LLM agent and its MCP server — layered permissions, tenant isolation enforced below the model, indirect-prompt-injection defense, denial-of-wallet controls, and HIPAA Safe Harbor PHI redaction.">
+    <meta name="theme-color" content="#0a0e14">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0e14' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%239fef00'>KD</text></svg>">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="nav-logo"><span>KD</span>Shetty</a>
+            <div class="nav-links">
+                <a href="../../index.html#about">About</a>
+                <a href="../../index.html#experience">Experience</a>
+                <a href="../../index.html#projects">Domains</a>
+                <a href="../../index.html#skills">Skills</a>
+                <a href="../../index.html#contact">Contact</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="cs-page">
+        <div class="container">
+            <a href="../../index.html#projects" class="cs-back">&larr; All security domains</a>
+
+            <div class="reveal">
+                <div class="cs-hero-eyebrow">AI / LLM Security &middot; Medlaunch Concepts</div>
+                <h1>Securing a Healthcare LLM Agent</h1>
+                <p class="cs-lede">Clara is an agent that reads clinical content and calls dozens of tools across a HIPAA platform on a user's behalf. That combination &mdash; autonomy, untrusted input, PHI, and a model with no concept of tenant boundaries &mdash; breaks the assumptions ordinary app-security controls rely on. I designed the permission model, the tenant isolation, and the prompt-injection and cost defenses that let it operate safely.</p>
+                <p class="cs-context-tag">Stack: Python / FastAPI &middot; AWS Bedrock &middot; MongoDB &middot; Athena &middot; distributed session store</p>
+            </div>
+
+            <div class="cs-statbar reveal">
+                <div class="stat-card"><div class="stat-number">42</div><div class="stat-label">Tools under governance</div></div>
+                <div class="stat-card"><div class="stat-number">3-scope</div><div class="stat-label">Permission model</div></div>
+                <div class="stat-card"><div class="stat-number">Server-side</div><div class="stat-label">Tenant isolation</div></div>
+                <div class="stat-card"><div class="stat-number">OWASP LLM</div><div class="stat-label">Top 10 covered</div></div>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Why an agent is a different threat model</h2>
+                <p>A traditional API does what the request says; an LLM agent <em>decides what to do</em> and then acts. It ingests documents, tickets, and survey text that an attacker may have authored, it can chain tool calls, and the model underneath has no idea which tenant it's serving. Three failure modes dominate, and none are solved by prompt engineering: <strong>cross-tenant data access</strong> through the tools, <strong>indirect prompt injection</strong> from content the agent reads, and <strong>PHI leakage</strong> into context, logs, or responses. I treated the model as untrusted and put the controls <em>around</em> it.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Least privilege for an autonomous caller</h2>
+                <p>Access resolves through three scopes &mdash; <strong>role &rarr; organization &rarr; conversation</strong> &mdash; and the <em>most restrictive</em> always wins. The conversation scope lets a user voluntarily run read-only even when their role allows more; the org scope is an admin ceiling; the role is the floor. On top of that, each of the 42 tools carries its own RBAC entry, so a destructive or risk-mutating tool needs a manager/admin role <em>and</em> an explicit confirmation step, while a read tool doesn't. The point: the agent can only ever exercise the intersection of what the user, the org, and the conversation permit &mdash; a confused-deputy or runaway tool-chain still can't exceed the caller's real authority.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>The core insight: isolate the tenant <em>below</em> the model</h2>
+                <p>You cannot trust an LLM to scope its own queries &mdash; a clever prompt will eventually talk it into "show me everything." So tenant isolation lives beneath the model, where the model can't reach it:</p>
+                <ul>
+                    <li><strong>MongoDB:</strong> a tenant <code>$match</code> stage is <em>prepended</em> to any pipeline the agent produces &mdash; whatever the LLM authors runs only inside the caller's organization.</li>
+                    <li><strong>Athena:</strong> generated SQL must carry the caller's facility identifier; queries that don't are rejected before execution.</li>
+                    <li><strong>Object storage:</strong> image and file access is locked to an <code>{org}/{user}/</code> key prefix derived from the session, never from a parameter the model can set.</li>
+                </ul>
+                <p>The model can ask for anything; the data layer will only ever return one tenant's data. That's the difference between "we told the AI to be careful" and an enforced boundary.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Prompt injection &amp; output handling</h2>
+                <p>The model can't reliably tell data from instructions, so I stopped asking it to. Tool results come back wrapped in an explicit <strong>untrusted-content envelope</strong>, and one real injection vector &mdash; a user forging a <code>[System: ...]</code>-style preamble to smuggle instructions &mdash; was closed by moving that state server-side so the user's text can never occupy a trusted slot. On the way out, every response passes an <strong>output sanitizer</strong> (strip script/iframe/event-handlers, rewrite dangerous URL schemes) applied at <em>both</em> the stream emit and again before persistence &mdash; defense in depth against stored XSS through generated content.</p>
+                <div class="cs-diagram">
+                    <div class="dg-node danger">Untrusted content<small>docs &middot; tickets</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">Untrusted envelope<small>data, not instructions</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">LLM (Bedrock)<small>tenant-scoped tools</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">Output sanitizer<small>strip &middot; rewrite</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node accent">User<small>safe render</small></div>
+                </div>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Session integrity &amp; cost as an attack surface</h2>
+                <p>The agent runs over long-lived WebSocket sessions, which is its own attack surface. Each connection authenticates with a <strong>single-use handshake ticket</strong> (short TTL), and every message thereafter <strong>re-binds to the authenticated identity</strong> &mdash; a swapped or replayed token terminates the socket rather than silently continuing. The JTI replay cache was moved off in-process memory into a <strong>shared store</strong> so the guarantee holds across replicas, not just one instance.</p>
+                <p>And a problem unique to LLMs: an attacker who can make the agent work can make you <em>pay</em>. I treated spend as a control &mdash; a <strong>Bedrock spend cap</strong> and per-user session quotas bound the blast radius of denial-of-wallet, and the Bedrock agent alias is pinned (no <code>$LATEST</code>) so model behavior can't shift underneath the safety testing.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>PHI redaction &amp; proving the invariants</h2>
+                <p>Because a model's context and a provider's logs are places PHI can escape, redaction happens <strong>before</strong> content reaches the model: an allowlist-based, per-data-model field classification that blocks the full set of <strong>HIPAA Safe Harbor 18 identifiers</strong>, feature-flag gated for per-environment enforcement. None of this is trustworthy unless it's continuously verified, so the boundaries are encoded as tests &mdash; permission resolution, organization isolation, and cross-org denial are part of the suite, so a regression that would open a tenant boundary <em>fails the build, not the pentest</em>.</p>
+                <p>Beyond securing the agent, I also built the AI/data systems around it &mdash; a topic-clustering pipeline over compliance documents, a knowledge-graph visualization, a transcription pipeline (presigned upload &rarr; speech-to-text &rarr; medical-vocabulary formatting), and AI pre-fill for clinical forms &mdash; so I secure these systems as someone who builds them.</p>
+                <div class="cs-stack">
+                    <span>AWS Bedrock</span><span>FastAPI</span><span>MCP</span><span>OWASP LLM Top 10</span><span>Per-tool RBAC</span><span>Prompt-Injection Defense</span><span>Tenant Isolation</span><span>PHI Redaction</span><span>Athena</span><span>WebSocket Auth</span>
+                </div>
+            </div>
+
+            <div class="cs-footer-nav reveal">
+                <a href="../devsecops-identity/" class="cs-link">Next: DevSecOps &amp; Identity &rarr;</a>
+                <a href="../../index.html#projects" class="cs-link">All domains &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>&copy; 2026 Kurudunje Deekshith Shetty. All rights reserved.</p></div></footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+    <script src="../../script.js"></script>
+    <script src="../../assistant.js" defer></script>
+</body>
+</html>

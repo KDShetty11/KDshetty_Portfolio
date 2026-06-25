@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — command not found</title>
+    <meta name="theme-color" content="#0a0e14">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0e14' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%239fef00'>KD</text></svg>">
+    <link rel="stylesheet" href="/KDshetty_Portfolio/styles.css">
+    <style>
+      .nf-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; position: relative; z-index: 1; }
+      .nf { width: min(620px, 94vw); }
+      .nf-body { padding: 26px 24px; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-secondary); line-height: 1.9; }
+      .nf-body .err { color: #ff5f57; }
+      .nf-body .ok { color: var(--accent); }
+      .nf-404 { font-family: var(--font-mono); font-size: clamp(3rem, 12vw, 6rem); font-weight: 800; color: var(--accent); letter-spacing: -2px; margin: 6px 0 10px; }
+      .nf-actions { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+    <div class="nf-wrap">
+        <div class="nf term">
+            <div class="term-bar">
+                <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+                <span class="term-title">visitor@kdshetty: ~</span>
+            </div>
+            <div class="nf-body">
+                <div class="nf-404">404</div>
+                <div><span class="ok">visitor@kdshetty:~$</span> cd <span id="nf-path">requested-page</span></div>
+                <div class="err">bash: cd: that path does not exist on this host.</div>
+                <div><span class="ok">visitor@kdshetty:~$</span> ls ~/safe-routes</div>
+                <div>about/  experience/  domains/  contact/  resume.pdf</div>
+                <div class="nf-actions">
+                    <a href="/KDshetty_Portfolio/" class="btn btn-primary">cd ~ (home)</a>
+                    <a href="/KDshetty_Portfolio/index.html#projects" class="btn btn-outline">view domains</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      try { document.getElementById('nf-path').textContent = location.pathname.replace(/^\/(KDshetty_Portfolio\/)?/,'') || 'requested-page'; } catch (e) {}
+    </script>
+    <script src="/KDshetty_Portfolio/assistant.js" defer></script>
+</body>
+</html>

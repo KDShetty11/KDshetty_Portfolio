@@ -5,3 +5,4 @@ decode_message.py
 *.log
 *.out
 *.synctex.gz
+.claude/

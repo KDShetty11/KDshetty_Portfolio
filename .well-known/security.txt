@@ -1,0 +1,6 @@
+# Security contact for this site
+Contact: mailto:k.deekshithshetty@gmail.com
+Contact: https://www.linkedin.com/in/kdshetty/
+Expires: 2027-06-25T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://kdshetty11.github.io/KDshetty_Portfolio/.well-known/security.txt

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Operations & Incident Response — Kurudunje Deekshith Shetty</title>
+    <meta name="description" content="Security operations domain: 2.5 years in an MSSP SOC engineering and correlating the full security stack — SIEM, EDR, XDR, NGFW, NAC, and NDR — across multiple enterprise customers, with detection engineering, threat hunting, and ransomware incident response as an L2 shift lead.">
+    <meta name="theme-color" content="#0a0e14">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0e14' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%239fef00'>KD</text></svg>">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="nav-logo"><span>KD</span>Shetty</a>
+            <div class="nav-links">
+                <a href="../../index.html#about">About</a>
+                <a href="../../index.html#experience">Experience</a>
+                <a href="../../index.html#projects">Domains</a>
+                <a href="../../index.html#skills">Skills</a>
+                <a href="../../index.html#contact">Contact</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="cs-page">
+        <div class="container">
+            <a href="../../index.html#projects" class="cs-back">&larr; All security domains</a>
+
+            <div class="reveal">
+                <div class="cs-hero-eyebrow">Security Operations &amp; Incident Response &middot; Terralogic (MSSP)</div>
+                <h1>MSSP SOC Engineering, Detection &amp; Response</h1>
+                <p class="cs-lede">Before I built controls, I ran them under fire. For 2.5 years in a managed security services provider, I deployed, integrated, and correlated the <strong>entire security stack &mdash; SIEM, EDR, XDR, next-gen firewalls, NAC, and NDR &mdash; across multiple enterprise customers at once</strong> (automotive, telecom, and IT-services sectors), as an L2 escalation point and shift lead. Every control I design now is shaped by what attackers actually do.</p>
+                <p class="cs-context-tag">Role: Cyber Security Analyst (promoted from Intern) &nbsp;&middot;&nbsp; Jun 2021 &ndash; Dec 2023 &nbsp;&middot;&nbsp; Bengaluru, IN</p>
+            </div>
+
+            <div class="cs-statbar reveal">
+                <div class="stat-card"><div class="stat-number">1,200+</div><div class="stat-label">Events triaged / year</div></div>
+                <div class="stat-card"><div class="stat-number">80+</div><div class="stat-label">Correlation rules built</div></div>
+                <div class="stat-card"><div class="stat-number">15+</div><div class="stat-label">IR investigations led</div></div>
+                <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">Customer tenants</div></div>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Multi-tenant MSSP operations</h2>
+                <p>In an MSSP, you don't run one SOC &mdash; you run many at once, each a different customer with its own estate, risk profile, and SLA. I operated across multiple enterprise tenants simultaneously, onboarding new customers end to end: standing up log collection, normalizing dozens of source types per tenant, building customer-specific detections, and keeping each tenant's data and dashboards strictly isolated. I served as the L2 escalation point &mdash; the analyst incidents got routed to when L1 needed a decision &mdash; and as shift lead coordinating real-time coverage and handoffs.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Deploying &amp; correlating the full security stack</h2>
+                <p>I didn't just consume alerts &mdash; I deployed the platforms that generate them and wired them together so a signal in one tool enriched every other:</p>
+                <ul>
+                    <li><strong>SIEM &amp; XDR:</strong> deployed and tuned LogRhythm SIEM and Stellar Cyber XDR &mdash; led tool migrations, onboarded 85+ log sources, and built parsing/normalization for non-standard formats.</li>
+                    <li><strong>EDR:</strong> rolled out SentinelOne and Kaspersky EDR across endpoint fleets, tuned policy/exclusions, and used them for containment (host isolation, kill/quarantine) during live incidents.</li>
+                    <li><strong>Network &mdash; NGFW, NAC, NDR, IDS/IPS:</strong> deployed and managed FortiGate, Cisco Meraki, and Palo Alto firewall policy; ran network access control with Cisco ISE and Forescout (802.1X posture, profiling, and segmentation); and integrated Darktrace NDR and IDS/IPS (Suricata, Snort) so east-west and north-south traffic fed the same correlation layer, alongside a Radware WAF.</li>
+                    <li><strong>Cross-platform correlation:</strong> built the integrations that let firewall, EDR, NDR, NAC, and identity telemetry land in one timeline &mdash; so a firewall block, an EDR detonation, and an NDR beacon on the same host correlated into a single, confirmed incident instead of three orphan alerts.</li>
+                </ul>
+                <div class="cs-diagram">
+                    <div class="dg-node">Endpoints<small>EDR (SentinelOne)</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">Network<small>NGFW &middot; NAC &middot; NDR / IDS</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">SIEM + XDR<small>correlation &amp; enrichment</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">L2 triage + hunt<small>per-tenant</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node accent">IR + shared intel<small>IOCs across tenants</small></div>
+                </div>
+                <p class="dg-caption">// many sources, one timeline &mdash; cross-tool correlation turns noise into confirmed incidents</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Detection engineering &mdash; the scenarios</h2>
+                <p>I engineered 80+ correlation rules and custom regex-based triage filters mapped to MITRE ATT&amp;CK, cutting the false-positive rate by 60% and mean triage time from 30 minutes to under 10. The detections spanned the full kill chain:</p>
+                <ul>
+                    <li><strong>Initial access:</strong> phishing with malicious attachments/links, password spray and credential stuffing, brute force against exposed RDP/VPN, and anomalous first-time geolocations.</li>
+                    <li><strong>Execution &amp; persistence:</strong> malicious Office macros, suspicious PowerShell/encoded commands, scheduled-task and run-key persistence, new service creation.</li>
+                    <li><strong>Credential access &amp; privilege escalation:</strong> Kerberoasting, LSASS access, suspicious privilege grants and group changes, MFA-fatigue / push-bombing patterns.</li>
+                    <li><strong>Lateral movement &amp; C2:</strong> pass-the-hash and SMB/WMI/RDP pivoting, and command-and-control beaconing detected by periodicity/jitter, rare user agents, and DNS tunneling.</li>
+                    <li><strong>Exfiltration &amp; impact:</strong> large or off-hours outbound transfers, data staging, and ransomware precursors &mdash; shadow-copy deletion and mass file-rename bursts &mdash; caught before encryption spread.</li>
+                </ul>
+                <p>The triage-time win came from filter design, not headcount: regex filters that auto-suppressed known-benign noise (vulnerability-scanner traffic, health checks, service accounts on their expected paths); alert enrichment that auto-attached asset owner, user, geo, and threat-intel reputation so an analyst saw the whole story without console-hopping; and multi-signal correlation that collapsed related events into one case &mdash; a firewall deny, an EDR detection, and an NDR beacon on the same host became a <em>single</em> high-confidence incident instead of three separate alerts to chase.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Threat hunting &amp; threat intelligence</h2>
+                <p>Beyond alert-driven work, I ran proactive hunts &mdash; hypothesis-led sweeps for anomalous authentication, lateral movement, and dormant C2 that signature-based alerting misses. I integrated and operationalized threat-intelligence feeds (open-source and commercial reputation/IOC sources), and ran an <strong>IOC lifecycle across tenants</strong>: an indicator confirmed in one customer's environment was vetted and pushed as protection to the other seven, so one detection hardened the whole book of business. I fed 45+ unique IOCs into shared intelligence in the process.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Incident response &amp; digital forensics</h2>
+                <p>I led 15+ end-to-end investigations, including multiple <strong>ransomware engagements</strong>. That meant scoping the blast radius across the customer estate, containing affected hosts via EDR isolation and firewall/NAC quarantine, and doing the forensics: memory dumps, disk imaging, timeline reconstruction, and IOC extraction. I delivered root-cause-analysis reports that named the initial vector and the control gaps that let it through, and coordinated remediation with each customer's internal team &mdash; the bridge between "alert fired" and "won't happen again."</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Leadership, playbooks &amp; PAM</h2>
+                <p>As shift lead I owned real-time SOC operations and was the L2 escalation point for the floor. I authored <strong>25+ MITRE ATT&amp;CK-mapped playbooks</strong> covering 12 threat tactics with automated alert-enrichment workflows, and ran knowledge transfer and mentoring for new analysts so response didn't depend on tribal knowledge. I also deployed <strong>BeyondTrust PAM</strong> internally &mdash; full session recording, just-in-time access provisioning, and credential vaulting integrated with Active Directory &mdash; eliminating standing privileged access through ephemeral, least-privilege workflows.</p>
+                <div class="cs-stack">
+                    <span>LogRhythm SIEM</span><span>Stellar Cyber XDR</span><span>SentinelOne EDR</span><span>Kaspersky EDR</span><span>FortiGate / Meraki / Palo Alto NGFW</span><span>NAC: Cisco ISE / Forescout</span><span>Darktrace NDR</span><span>Suricata / Snort</span><span>Radware WAF</span><span>MITRE ATT&amp;CK</span><span>DFIR</span><span>Threat Intel</span><span>Nessus / Qualys</span><span>BeyondTrust PAM</span>
+                </div>
+            </div>
+
+            <div class="cs-footer-nav reveal">
+                <a href="../cloud-infrastructure/" class="cs-link">Back to: Cloud Security &amp; Infrastructure &rarr;</a>
+                <a href="../../index.html#projects" class="cs-link">All domains &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>&copy; 2026 Kurudunje Deekshith Shetty. All rights reserved.</p></div></footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+    <script src="../../script.js"></script>
+    <script src="../../assistant.js" defer></script>
+</body>
+</html>

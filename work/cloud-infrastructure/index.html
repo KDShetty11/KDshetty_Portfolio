@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Security & Infrastructure — Kurudunje Deekshith Shetty</title>
+    <meta name="description" content="Cloud security domain: architecting and hardening the AWS estate for a HIPAA healthcare SaaS — a network where nothing in the data path is internet-reachable, reasoned defense-in-depth, tamper-proof audit logging, and IAM remediation by vulnerability class.">
+    <meta name="theme-color" content="#0a0e14">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230a0e14' width='100' height='100' rx='20'/><text x='50' y='68' text-anchor='middle' font-size='50' font-family='monospace' font-weight='bold' fill='%239fef00'>KD</text></svg>">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="../../index.html" class="nav-logo"><span>KD</span>Shetty</a>
+            <div class="nav-links">
+                <a href="../../index.html#about">About</a>
+                <a href="../../index.html#experience">Experience</a>
+                <a href="../../index.html#projects">Domains</a>
+                <a href="../../index.html#skills">Skills</a>
+                <a href="../../index.html#contact">Contact</a>
+            </div>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="cs-page">
+        <div class="container">
+            <a href="../../index.html#projects" class="cs-back">&larr; All security domains</a>
+
+            <div class="reveal">
+                <div class="cs-hero-eyebrow">Cloud Security &amp; Infrastructure &middot; Medlaunch Concepts</div>
+                <h1>The AWS &amp; Azure Platform, End to End</h1>
+                <p class="cs-lede">I own the cloud platform end to end across <strong>AWS and Azure</strong> &mdash; network, compute, identity, data protection, detection, and the deployment path, provisioned as code with Terraform. I designed, deployed, and configured all of it myself, including the IAM/Entra policies and access protections for every service. The job wasn't enabling a list of services; it was making deliberate choices so PHI stays reachable only through paths I control, evidence can't be tampered with, and a single compromise stays small.</p>
+                <p class="cs-context-tag">AWS + Azure / Entra &nbsp;&middot;&nbsp; multi-region (primary + DR) &nbsp;&middot;&nbsp; HIPAA Business Associate (BAA in place)</p>
+            </div>
+
+            <div class="cs-statbar reveal">
+                <div class="stat-card"><div class="stat-number">AWS + Azure</div><div class="stat-label">Identity &amp; access owned</div></div>
+                <div class="stat-card"><div class="stat-number">Terraform</div><div class="stat-label">Infrastructure as code</div></div>
+                <div class="stat-card"><div class="stat-number">500+</div><div class="stat-label">Findings remediated (by class)</div></div>
+                <div class="stat-card"><div class="stat-number">WORM</div><div class="stat-label">Tamper-proof audit log</div></div>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>The mandate</h2>
+                <p>A healthcare SaaS handling PHI, no security team, and an account that had grown the way startups' do &mdash; broad permissions, services reachable from anywhere, encryption and logging applied unevenly. My job was to turn that into a posture I could defend to an auditor and to an attacker, without taking the product offline to do it.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>A network where the data path isn't internet-reachable</h2>
+                <p>The organizing principle: nothing that touches data should be directly reachable from the internet. So the only things in public subnets are the load balancer and a NAT gateway. The application containers run in <strong>private subnets</strong>, reachable only through the ALB; egress to external services goes out through NAT. The database is reached over <strong>VPC peering to MongoDB Atlas</strong>, so PHI in transit never crosses the public internet, and Atlas's allowlist is pinned to our egress address rather than left open.</p>
+                <p>At the edge, the WAF runs in <strong>default-deny allowlist mode</strong> &mdash; it permits the specific request shapes the app needs and blocks everything else, which fails safe as new routes appear, unlike a blocklist that's only as good as its last signature update. CloudFront fronts it with TLS termination and a strict header policy.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Defense in depth, chosen for a reason</h2>
+                <ul>
+                    <li><strong>Preventive</strong> &mdash; WAF allowlist, account-wide Block Public Access, SSE-KMS as the default for object and queue storage, and secrets in a managed store so there are no long-lived keys sitting in environment files.</li>
+                    <li><strong>Detective &amp; continuous</strong> &mdash; GuardDuty for runtime threats, Macie classifying the PHI store on a schedule, Inspector scanning container images, and CloudTrail feeding Security Hub. The emphasis is on <em>continuous</em> evaluation: posture is checked constantly, not at audit time.</li>
+                    <li><strong>Data protection</strong> &mdash; encryption at rest and in transit everywhere, plus a PHI access-audit layer at the application so every read of sensitive data is attributable, satisfying HIPAA §164.312(b).</li>
+                </ul>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Identity &amp; access &mdash; across AWS and Azure</h2>
+                <p>I run identity on both clouds, end to end. On AWS that's <strong>Identity Center SSO</strong> and a per-service role model &mdash; each ECS task, Lambda, and pipeline gets its own least-privilege execution role scoped to exactly the resources it needs, with KMS keys and Secrets Manager entries protected by tight resource policies rather than broad grants. On the Microsoft side I administer <strong>Entra ID and Intune</strong>: employee joiner/mover/leaver lifecycle, SSO with conditional-access and MFA, device enrollment and compliance policy, and <strong>mailbox and application access management across M365</strong>. Every access boundary &mdash; IAM, Entra, KMS, secrets &mdash; I wrote and configured myself, so least privilege is enforced consistently whether a request comes from a service, a pipeline, or a person. (The zero-standing-admin design behind the AWS side is detailed under <a href="../devsecops-identity/">DevSecOps &amp; Identity</a>.)</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>Audit logging an insider can't quietly rewrite</h2>
+                <p>Compliance is only as trustworthy as the evidence behind it, so the audit trail is designed to be <strong>immutable and independently sourced</strong>. Control-plane activity from three planes &mdash; source control, identity, and the database &mdash; is exported to an S3 bucket under <strong>Object Lock (WORM)</strong>, where even an administrator can't alter or delete it within the retention window. The source-control pipeline verifies an <strong>HMAC signature</strong> on every event before it's written, so the log can't be spoofed. The result is a tamper-evident record of who did what, drawn from the systems themselves rather than from the app's own logs.</p>
+                <div class="cs-diagram">
+                    <div class="dg-node">GitHub<small>webhook</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">API Gateway<small>HMAC-verified</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node">Lambda<small>+ Entra &amp; Atlas</small></div>
+                    <div class="dg-arrow">&rarr;</div>
+                    <div class="dg-node accent">S3 Object Lock<small>WORM</small></div>
+                </div>
+                <p class="dg-caption">// control-plane evidence from three independent planes, written where it can't be altered</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>IAM remediation by class, not by ticket</h2>
+                <p>The 500+ Security Hub findings I cleared mattered because of <em>what</em> they were, not how many. I triaged them into classes and went after the ones that actually move risk:</p>
+                <ul>
+                    <li><strong>Privilege-escalation paths</strong> &mdash; roles that could <code>PassRole</code> into more powerful roles or carried IAM-mutating permissions, the findings that turn a foothold into account takeover. These came first.</li>
+                    <li><strong>Over-permissioned roles</strong> &mdash; wildcard actions and unused broad grants, scoped down to least privilege.</li>
+                    <li><strong>Public-access &amp; encryption gaps</strong> &mdash; exposed resources and unencrypted stores, closed account-wide rather than one at a time.</li>
+                </ul>
+                <p>An IAM audit across the account's roles, users, and buckets drove the work, and it ran as a <strong>phased, blast-radius-aware plan</strong> &mdash; each change weighed for what it could break, sequenced so production never went down. Closing those classes is what took SOC 2 / HIPAA gap closure to 85% in four months.</p>
+            </div>
+
+            <div class="cs-block reveal">
+                <h2>End-to-end ownership</h2>
+                <p>This isn't a "review someone else's infra" role &mdash; I build and run it. I own the deployment path: containerized backend, CI to container registry to ECS with health-gated rolling deploys and rollback, the frontend build to object storage + CDN, and the standalone serverless services behind the API gateway. Infrastructure is defined as code with <strong>Terraform</strong>, so the whole estate is reproducible and peer-reviewable. I consolidated fragmented DNS into one zone, issued and wired TLS across every host, and stood up the WAF, CORS, and header posture in front of it all. App, infrastructure, network, identity, and pipeline are one person's remit &mdash; mine.</p>
+                <div class="cs-stack">
+                    <span>Terraform</span><span>VPC / private subnets</span><span>VPC peering</span><span>ECS / ECR</span><span>ALB + ACM</span><span>CloudFront + WAF</span><span>Route 53</span><span>Identity Center</span><span>Entra ID / Intune</span><span>M365</span><span>GuardDuty</span><span>Macie</span><span>Inspector</span><span>Security Hub</span><span>CloudTrail</span><span>KMS / Secrets</span><span>S3 Object Lock</span>
+                </div>
+            </div>
+
+            <div class="cs-footer-nav reveal">
+                <a href="../application-security/" class="cs-link">Next: Application Security &rarr;</a>
+                <a href="../../index.html#projects" class="cs-link">All domains &rarr;</a>
+            </div>
+        </div>
+    </main>
+
+    <footer><div class="container"><p>&copy; 2026 Kurudunje Deekshith Shetty. All rights reserved.</p></div></footer>
+    <button class="back-to-top" aria-label="Back to top">&uarr;</button>
+    <script src="../../script.js"></script>
+    <script src="../../assistant.js" defer></script>
+</body>
+</html>
